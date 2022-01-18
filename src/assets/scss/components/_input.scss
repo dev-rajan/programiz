@@ -1,0 +1,173 @@
+.input {
+  @include e(label) {
+    @include getFontSize('body14');
+    color: getColor('text.main');
+    text-transform: capitalize;
+    margin-bottom: getSpacing('2x');
+  }
+
+  @include e(control) {
+    border-radius: $border-radius;
+    border: 1px solid getColor('grey.borderGray');
+    height: 48px;
+    padding: getSpacing('3x') getSpacing('4x');
+    width: 100%;
+    color: getColor('text.main');
+
+    .input--error & {
+      border: 1px solid getColor('danger.base');
+    }
+
+    &::placeholder {
+      color: getColor('text.light');
+    }
+  }
+
+  @include e(error) {
+    color: getColor('danger.base');
+    @include getFontSize('caption');
+    margin-top: getSpacing('2x');
+  }
+
+  &-w-prepend {
+    position: relative;
+
+    .input-prepend {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 1rem;
+      pointer-events: none;
+    }
+
+    input {
+      padding-left: 3.25rem;
+    }
+  }
+
+  &-w-append {
+    position: relative;
+
+    .input-append {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1rem;
+      display: flex;
+      pointer-events: none;
+    }
+
+    input,
+    select {
+      padding-right: 2rem;
+      background: $white;
+    }
+  }
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.form-group {
+  .form-text {
+    font-size: 0.875rem;
+  }
+
+  @include m(error) {
+    .form-control {
+      border-color: $alert;
+    }
+
+    .form-text {
+      color: $alert;
+    }
+  }
+
+  @include m(success) {
+    .form-control {
+      border-color: $success;
+    }
+
+    .form-text {
+      color: $success;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.4;
+  }
+}
+
+.form-control {
+  &-group {
+    position: relative;
+  }
+
+  @include e(append) {
+    display: inline-flex;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+.form__control--dark {
+  background-color: #2D2F34;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: $white;
+
+
+  &:active,
+  &:focus {
+    background-color: #2D2F34;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: $white;
+  }
+}
+
+.form__control--sm {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.activation-code {
+  @include e(label) {
+    font-size: 0.875rem;
+
+    .code-expiration {
+      color: getColor('text.caption');
+    }
+  }
+
+  @include e(input) {
+    gap: 1rem;
+  }
+
+  .form-control {
+    padding: 0.75rem 0.25rem;
+    text-align: center;
+  }
+}
+
+.custom-select {
+  height: unset;
+}
+
+.input-group--w-icon {
+  position: relative;
+
+  .form-control {
+    border-radius: $border-radius;
+  }
+}
+
+.input-append{
+  svg{
+    fill:#25265E;
+  }
+}

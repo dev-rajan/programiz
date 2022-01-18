@@ -1,0 +1,177 @@
+.quiz {
+  @include e(wrapper) {}
+
+  &-answer {
+    @include e(item) {
+      display: block;
+      background-color: $white;
+      padding: 1rem;
+      // border: 1px solid getColor('grey.borderGray');
+      border-radius: $border-radius;
+      box-shadow: 0 6px 0 rgba(217, 217, 217, 0.25);
+      margin-bottom: 1.5rem;
+      @include transition;
+
+      @include m(selected) {
+        background-color: $primary;
+        border-color: $primary;
+        color: $white;
+        box-shadow: 0px 8px 4px rgba(104, 155, 255, 0.34);
+      }
+
+      @include m(correct) {
+        background-color: $success;
+        border-color: $success;
+        color: $white;
+        box-shadow: 0px 8px 4px rgba(104, 255, 192, 0.34);
+      }
+
+      @include m(incorrect) {
+        background-color: $alert;
+        border-color: $alert;
+        color: $white;
+        box-shadow: 0px 8px 4px rgba(255, 104, 104, 0.2);
+      }
+
+      input {
+        opacity: 0;
+        position: absolute;
+        height: 1px;
+        width: 1px;
+      }
+
+      &:not(.active):hover {
+        border: 1px solid transparentize($color: $primary, $amount: 0.8);
+        background-color: transparentize($primary, 0.9);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.answer-status {
+  display: flex;
+  border: 1px solid getColor('grey.borderGray');
+  border-radius: $border-radius;
+  margin-bottom: getSpacing('6x');
+  background-color: $white;
+
+  @include e(title) {
+    margin-bottom: getSpacing('1x');
+  }
+
+  @include e(body) {
+    padding: getSpacing('3x');
+    font-size: getFontSize('body14');
+  }
+
+  @include e(icon) {
+    padding: getSpacing('4x');
+    display: flex;
+    align-items: center;
+    background-color: $faint-base;
+  }
+
+  @include m(correct) {
+    border-color: $success;
+
+    .answer-status__title,
+    .answer-status__icon {
+      color: $success;
+    }
+
+    .answer-status__icon {
+      background-color: transparentize($success, 0.8);
+    }
+  }
+
+  @include m(incorrect) {
+    border-color: $alert;
+
+    .answer-status__title,
+    .answer-status__icon {
+      color: $alert;
+    }
+
+    .answer-status__icon {
+      background-color: transparentize($alert, 0.8);
+    }
+  }
+ &__title{
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 24px;
+ }
+@include e(text){
+  font-size: 14px;
+  line-height: 20px;
+}
+}
+
+#code-editor {
+  z-index: 2;
+  width: 102% !important;
+  height: 345px!important;
+  @include mqmax(sm){
+    height: 34em!important;
+  }
+}
+
+.editor__block {
+  position: relative;
+  background-color: #1F2023;
+  height: 345px;
+  @include mqmax(md){
+  min-height: 424px;
+
+  }
+}
+
+.editor__header {
+  background-color: #1F2023;
+  padding-top: getSpacing('6x');
+  width: 102%;
+}
+
+.editor__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  .form-control:disabled, .form-control[readonly]{
+    background-color: transparent;
+    color: $white;
+  }
+  .btn {
+    min-width: 148px;
+    @include mqmax(lg){
+      min-width: 100%;
+    }
+  }
+  
+}
+
+.quiz-answer__item {
+  border: 1px solid #D3DCE6;
+}
+
+.ace_gutter,
+.ace_scroller {
+  background-color: #1F2023 !important;
+}
+
+.ace_gutter {
+  color: $white !important;
+}
+
+.editor__output {
+  background-color: #2D2F34;
+  padding: 32px 24px;
+}
+.w-sm-100{
+  @include mqmax(sm){
+    width: 100%;
+  }
+}

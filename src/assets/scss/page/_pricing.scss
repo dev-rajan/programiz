@@ -1,0 +1,28 @@
+.pricing-detail{
+    .accordion{
+        @include e(title){
+            padding: 24px 32px;
+        }   
+        ul{
+            margin-left: 14px;
+        } 
+        @include e(item){
+            &:last-child{
+                border: none;
+            }
+        }
+        @include e(content){
+            p{
+                margin-bottom: 8px;
+            }
+        }
+    }
+    
+}
+.pricing__list{
+    color: #25265E;
+}
+.main-price{
+    color: #25265E;
+    font-weight: 600;
+}

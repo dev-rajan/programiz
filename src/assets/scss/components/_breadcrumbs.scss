@@ -1,0 +1,12 @@
+.breadcrumb {
+    border-radius: 0;
+    margin-bottom: 0;
+    &-item + &-item::before {
+        content: '>';
+    }
+    &-item{
+        &.active {
+            color: $color-text;
+        }
+    }
+}

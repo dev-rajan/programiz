@@ -1,0 +1,52 @@
+.lightbox {
+  @include e(wrapper) {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  @include e(item) {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    min-width: 156px;
+    max-width: 156px;
+    &:hover {
+      .lightbox__detail {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  @include e(detail) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $black;
+    border-radius: $border-radius;
+    color: $white;
+    padding: 1.25rem 1rem;
+    opacity: 0;
+    visibility: hidden;
+    @include transition;
+  }
+
+  @include e(action) {
+    display: flex;
+    justify-content: space-around;
+    a {
+      color: $white;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.certificate-section {
+  padding-top: 60px;
+}

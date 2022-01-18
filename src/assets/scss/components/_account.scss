@@ -1,0 +1,12 @@
+.account-setting {
+  padding: 60px 0;
+  @include e(title) {
+    margin-bottom: 40px;
+  }
+}
+
+.page-notification-wrapper {
+  background-color: $purple-grey;
+  border-radius: 10px;
+  padding: getSpacing('6x')
+}
