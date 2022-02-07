@@ -9,8 +9,8 @@ const SITE_DATA = {
   siteLanguage: "en", // Language Tag on <html> element
   image: {
     src: programizLogo,
-    width: 384,
-    height: 384,
+    width: 200,
+    height: 200,
   },
   keywords: [],
   ogLanguage: "en_US", // Facebook Language
