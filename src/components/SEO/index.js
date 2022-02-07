@@ -132,8 +132,13 @@ const SEO = ({
       <Head title={seo.title}>
         <title>{seo.title}</title>
         <link rel="canonical" href={seo.url} />
-        <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
+        <meta
+          property="og:description"
+          name="description"
+          content={seo.description}
+        />
+        <meta property="og:image" name="image" content={seo.image} />
+        {/* <meta name="image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" /> */}
         <meta name="keywords" content={seo.keywords} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Head>
