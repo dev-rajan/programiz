@@ -132,19 +132,14 @@ const SEO = ({
       <Head title={seo.title}>
         <title>{seo.title}</title>
         <link rel="canonical" href={seo.url} />
-        <meta
-          property="og:description"
-          name="description"
-          content={seo.description}
-        />
-        {/* <meta property="og:image" name="image" content={seo.image} /> */}
-        <meta property="og:image" name="image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+        <meta name="description" content={seo.description} />
+        <meta name="image" content={seo.image} />
         <meta name="keywords" content={seo.keywords} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Head>
       <OpenGraph
         description={seo.description}
-        image="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"
+        image={seo.image}
         title={seo.title}
         type={article ? "article" : "website"}
         url={seo.url}
@@ -154,7 +149,7 @@ const SEO = ({
       <TwitterCard
         type={twitterCardType || defaultTwitterCardType}
         title={seo.title}
-        image="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"
+        image={seo.image}
         description={seo.description}
         username={twitter}
         url={seo.url}
