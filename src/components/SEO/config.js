@@ -1,4 +1,4 @@
-import programizLogo from "assets/images/logo-programiz-pro.svg";
+import programizLogo from "../../../public/images/share-logo.svg";
 
 const SITE_DATA = {
   title: "Programiz PRO", // Navigation and site title
@@ -8,7 +8,7 @@ const SITE_DATA = {
   url: "https://www.programiz.pro", // Domain of site. No trailing slash!
   siteLanguage: "en", // Language Tag on <html> element
   image: {
-    src: "/images/share-logo.svg",
+    src: programizLogo,
     width: 384,
     height: 384,
   },
