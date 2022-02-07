@@ -130,20 +130,14 @@ const SEO = ({
   return (
     <>
       <Head title={seo.title}>
-        <title>Hello</title>
-      <meta property="og:title" content="How to set GitHub credentials for macOS" />
-      <meta property="og:description" content="Set up GitHub authentication so you can use it from VS Code or the command line" />
-      <meta property="og:type" content="article" />
-      <meta property="og:url" content="https://flaviocopes.com/setup-github-credentials-macos/" />
-      <meta property="og:image" content="https://flaviocopes.com/img/avatar.png"/>
-        {/* <title>{seo.title}</title>
+        <title>{seo.title}</title>
         <link rel="canonical" href={seo.url} />
-        <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
-        <meta name="keywords" content={seo.keywords} /> */}
+        <meta property="og:description" name="description" content={seo.description} />
+        <meta property="og:image" name="image" content={seo.image} />
+        <meta name="keywords" content={seo.keywords} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Head>
-      {/* <OpenGraph
+      <OpenGraph
         description={seo.description}
         image={seo.image}
         title={seo.title}
@@ -159,7 +153,7 @@ const SEO = ({
         description={seo.description}
         username={twitter}
         url={seo.url}
-      /> */}
+      />
     </>
   );
 };
