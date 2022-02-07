@@ -132,8 +132,8 @@ const SEO = ({
       <Head title={seo.title}>
         <title>{seo.title}</title>
         <link rel="canonical" href={seo.url} />
-        <meta property="og:description" name="description" content={seo.description} />
-        <meta property="og:image" name="image" content={seo.image} />
+        <meta name="description" content={seo.description} />
+        <meta name="image" content={seo.image} />
         <meta name="keywords" content={seo.keywords} />
         <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
       </Head>
