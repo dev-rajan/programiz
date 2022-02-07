@@ -1,8 +1,6 @@
 import axios from "axios";
 
-
 const apiUrl = "https://programiz-pro-staging.programiz.com";
-// const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 axios.defaults.baseURL = `${apiUrl}/api`;
 
