@@ -16,7 +16,6 @@ const CourseTypeFilter = ({
       role="tab"
     >
       {filterItem.title}
-      {/* <span className="tab__indicator ml-1">{getTotal(idx)}</span> */}
       <span className="tab__indicator ml-1">{dataCount}</span>
     </button>
   );

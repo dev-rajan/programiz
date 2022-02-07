@@ -1,6 +1,7 @@
 {
   "data": {
     "title": "Learn C Programming",
+    "shareModalClassName": "modal-top--32",
     "summary": "C is one of the most efficient programming languages that help you understand how the software and hardware interact with each other. That's why we believe every programmer should learn C, as it allows you to work directly with computer memory and helps understand programming from a deeper level.</br> </br>Master C programming in the most interactive way possible, solving challenges and building projects.",
     "card1": {
       "id": 1,
@@ -16,10 +17,6 @@
       "rock_paper": {
         "title": "Rock, Paper & Scissors",
         "desc": "You will create a popular game rock paper scissors using the basic concepts of C like functions, control flow, and input/output."
-      },
-      "tic_toe": {
-        "title": "Tic Tac Toe",
-        "desc": "You will use the concept of object-oriented in Python to create the Tic Tac Toe game."
       }
     }
   }

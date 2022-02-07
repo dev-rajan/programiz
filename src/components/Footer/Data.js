@@ -7,23 +7,23 @@ export const Data = {
       {
         id: 0,
         title: "Python",
-        url: "#",
+        url: "/catalog/languages/python",
       },
       {
         id: 1,
         title: "C Programming",
-        url: "#",
+        url: "/catalog/languages/c",
       },
-      {
-        id: 2,
-        title: "C++",
-        url: "#",
-      },
-      {
-        id: 3,
-        title: "Java",
-        url: "#",
-      },
+      // {
+      //   id: 2,
+      //   title: "C++",
+      //   url: "#",
+      // },
+      // {
+      //   id: 3,
+      //   title: "Java",
+      //   url: "#",
+      // },
     ],
   },
   resources: {
@@ -67,26 +67,26 @@ export const Data = {
       {
         id: 1,
         title: "Privacy Policy",
-        url: "https://dev.app.programiz.pro/privacy-policy",
+        url: "/privacy-policy",
       },
       {
         id: 2,
-        title: "Terms & Conditions",
-        url: "https://dev.app.programiz.pro/terms-and-conditions",
+        title: "Terms of Services",
+        url: "/terms-of-service",
       },
       {
         id: 3,
         title: "Contact",
-        url: "#",
+        url: "/contact",
       },
-      {
-        id: 4,
-        title: "Discord",
-        url: "#",
-      },
+      // {
+      //   id: 4,
+      //   title: "Discord",
+      //   url: "#",
+      // },
       {
         id: 5,
-        title: "FAQ",
+        title: "FAQs",
         url: "/faq",
       },
     ],

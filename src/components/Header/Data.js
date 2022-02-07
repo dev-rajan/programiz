@@ -25,7 +25,7 @@ export const Data = {
     {
       id: 1,
       title: "Courses",
-      url: "/package?type=all",
+      url: "/catalog",
     },
     // {
     //   id: 2,

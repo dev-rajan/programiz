@@ -8,7 +8,7 @@ const SITE_DATA = {
   url: "https://www.programiz.pro", // Domain of site. No trailing slash!
   siteLanguage: "en", // Language Tag on <html> element
   image: {
-    src: programizLogo,
+    src: "images/share-logo.svg",
     width: 384,
     height: 384,
   },

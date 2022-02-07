@@ -78,6 +78,7 @@ body {
   font-size: $base__font-size;
   text-rendering: optimizeLegibility;
   line-height: $base__body__line;
+  overflow-x: hidden;
 }
 
 #__next {
@@ -88,9 +89,13 @@ body {
   min-height: 100vh;
   flex-direction: column;
 }
-main{
-  flex:1;
-  overflow: hidden;
+
+main {
+  flex: 1;
+
+  @include mqmax(lg) {
+    overflow: hidden;
+  }
 }
 
 a {
@@ -256,9 +261,11 @@ figure {
 .rwt__tab {
   border: none;
 }
-.text-primary-dark{
+
+.text-primary-dark {
   color: $tertiary;
 }
+
 .rwt__tab:focus {
   outline: 0;
 }
@@ -302,6 +309,19 @@ figure {
       position: absolute;
       bottom: -3em;
     }
+
+    #contactMessage{
+      height: 96px;
+    }
+  }
+
+  .form-control, .custom-select {
+    line-height: 1.4;
+  }
+
+  .btn {
+    font-size: 16px 20px;
+    min-width: 148px;
   }
 }
 
@@ -321,7 +341,8 @@ figure {
   &.show {
     opacity: 1;
     top: 100%;
-    z-index: 100;
+    z-index: 1000;
+    max-height: 473px;
   }
 }
 
@@ -488,8 +509,118 @@ li.nav-item.active a {
     z-index: 10;
     background-image: url('../../images/earn.png');
     background-repeat: no-repeat;
-    @include mqmax(lg){
+
+    @include mqmax(lg) {
       display: none;
     }
   }
+}
+
+textarea {
+  resize: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.compiler__loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+  background: rgba(224, 255, 255, 0.01);
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9;
+}
+
+.about__desc:nth-child(2) h2 {
+  margin-bottom: 16px;
+}
+
+.pb32 {
+  padding-bottom: 32px;
+}
+
+.hero-inner__tag {
+  font-weight: 500;
+}
+
+.text-primary-shade {
+  font-weight: 500;
+}
+
+.learn__image {
+  margin-right: 16px;
+  min-width: 32px;
+  height: 32px;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #FFC33D;
+    border-radius: 50%;
+    right: -10px;
+    top: -12px;
+    z-index: 0;
+  }
+
+  img {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.why-this-path.course-path {
+  padding: 122px 49px 72px 219px;
+
+  @include mqmax(lg) {
+    padding: 32px 23px 32px 120px;
+  }
+}
+
+.path-title {
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.path-text {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+.truncate {
+  width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body {
+  &.no-scroll {
+    @include mqmax(lg) {
+      overflow: hidden;
+    }
+  }
+}
+
+.dropdown-menu__content .dropdown-menu__list{
+  padding: 1rem 1.5rem;
+  max-height: unset;
 }

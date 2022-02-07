@@ -2,10 +2,10 @@ export const Data = {
   title: "Frequently Asked Questions",
   list: [
     { id: 1, title: "General" },
-    { id: 2, title: "Programiz PRO" },
-    { id: 3, title: "Account" },
-    { id: 4, title: "Certificates" },
-    { id: 5, title: "Course Content" },
+    // { id: 2, title: "Programiz PRO" },
+    { id: 2, title: "Account" },
+    { id: 3, title: "Certificates" },
+    { id: 4, title: "Course Content" },
   ],
 };
 
@@ -93,11 +93,10 @@ const ACCOUNT_REQUESTED = `<p>You might not have received the email for one of t
 <p>If you still did not receive an email from us, do contact us at <a href="mailto:feedback@programiz.pro" target="_blank">feedback@programiz.pro</a>, and we'll be happy to help.</p>
 `;
 
-// CERTIFIATE
+// CERTIFICATE
 const CERTIFICATE_PROVIDE = `<p>Yes, you can avail certificates for any course. However, you must complete the challenges of that specific course.</p>`;
-const CERTIFICATE_PAY = `<p>No, certificates are completely free. It comes with an account subscription.</p>`;
-const CERTIFICATE_GET = `<p>No. If you're confident in any topic, you can directly get a certificate by completing the challenges of the course.</p>
-<p>For example, if you have a good understanding of python basics, you can directly solve Python Basics Challenges and get a certificate for Learn Python: Basics.</p>`;
+const CERTIFICATE_PAY = `<p>No, certificate comes bundled with an account subscription. However, you must complete challenges in order to download certificates.</p>`;
+const CERTIFICATE_GET = `<p>Yes. You must complete an entire course content and their challenges to download a certificate.</p>`;
 const CERTIFICATE_DIFFERENCE = `<p>You will get a Completion Certificate once you solve the challenges of any course.</p>
 <p>And, if you complete all the courses along with their corresponding challenges inside a learning path, you will get the Professional Certificate.</p>`;
 const CERTIFICATE_DOWNLOAD = `<p>You can always download the certificate from the My Certificates section in a User Profile page. However, you can also download the certificates immediately after completing the course.</p>
@@ -131,63 +130,63 @@ export const List = {
       },
       {
         id: 2,
-        title: "Does Programiz PRO have dark mode?",
-        desc: DARK_MODE,
-      },
-      {
-        id: 3,
         title: "Is Programiz PRO ad free?",
         desc: AD_FREE,
       },
       {
-        id: 4,
+        id: 3,
         title: "How do I contact you regarding issues in Programiz PRO?",
         desc: CONTACT,
       },
+      // {
+      //   id: 5,
+      //   title: "Does Programiz PRO offer a free trial?",
+      //   desc: OFFER,
+      // },
+      // {
+      //   id: 6,
+      //   title: "How long can I access Programiz PRO?",
+      //   desc: LONG_ACCESS,
+      // },
       {
-        id: 5,
-        title: "Does Programiz PRO offer a free trial?",
-        desc: OFFER,
-      },
-      {
-        id: 6,
-        title: "How long can I access Programiz PRO?",
-        desc: LONG_ACCESS,
-      },
-      {
-        id: 7,
+        id: 4,
         title: "Can I access the course from any device?",
         desc: ACCESS_COURSE,
       },
       {
-        id: 8,
+        id: 5,
         title: "What benefits do I get after subscribing to Programiz PRO?",
         desc: BENEFITS,
       },
       {
-        id: 9,
+        id: 6,
         title: "Do Programiz PRO have any mobile apps?",
         desc: MOBILE_APPS,
       },
       {
-        id: 10,
+        id: 7,
         title: "Can I save tutorials for offline use?",
         desc: OFFLINE,
       },
+      // {
+      //   id: 11,
+      //   title: "Can I access any course for free?",
+      //   desc: ACCESS,
+      // },
       {
-        id: 11,
-        title: "Can I access any course for free?",
-        desc: ACCESS,
-      },
-      {
-        id: 12,
-        title: "Do I get live customer support? ",
+        id: 8,
+        title: "Do I get customer support? ",
         desc: SUPPORT,
       },
       {
-        id: 13,
+        id: 9,
         title: "Where can I find my enrolled courses?",
         desc: FIND,
+      },
+      {
+        id: 10,
+        title: "Does Programiz PRO have dark mode?",
+        desc: DARK_MODE,
       },
     ],
   },
@@ -339,19 +338,19 @@ export const List = {
     list: [
       {
         id: 1,
+        title:
+          "Do I need to have a programming background for courses in Programiz PRO?",
+        desc: CONTENT_BACKGROUND,
+      },
+      {
+        id: 2,
         title: "How is Programiz PRO different from other online courses?",
         desc: CONTENT_DIFFERENT,
       },
       {
-        id: 2,
+        id: 3,
         title: "How are learning paths different from courses?",
         desc: CONTENT_DIFFERENCE,
-      },
-      {
-        id: 3,
-        title:
-          "Do I need to have a programming background for courses in Programiz PRO?",
-        desc: CONTENT_BACKGROUND,
       },
       {
         id: 4,
@@ -365,7 +364,7 @@ export const List = {
       },
       {
         id: 6,
-        title: "Can I start random courses in?",
+        title: "Can I start courses in Programiz PRO randomly?",
         desc: CONTENT_RANDOM,
       },
       {

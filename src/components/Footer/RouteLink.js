@@ -1,14 +1,11 @@
 import React from "react";
-import Link from "next/link";
 
-const RouteLink = ({ title, url }) => {
+const RouteLink = ({ title, url, target }) => {
   return (
     <li>
-      <Link href={url}>
-        <a title={title} className="footer__link">
-          {title}
-        </a>
-      </Link>
+      <a href={url} className="footer__link" target={target}>
+        {title}
+      </a>
     </li>
   );
 };

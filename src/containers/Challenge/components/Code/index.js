@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Form } from "react-distributed-forms";
 
 import Code from "./ChallengeCode";
-import { data } from "./Data";
 
 import Success from "containers/Landing/component/Quiz/Success";
 import Completed from "containers/Landing/component/Quiz/Completed";
@@ -29,6 +28,7 @@ const ChallengeSuccess = ({ step }) => (
       <div className="row justify-content-center">
         <div className="col-lg-6">
           <Success
+            isMounted={true}
             extraClass="text-white"
             title={`Challenge ${step} Completed`}
             message={`Great work on completing the ${getNumberWithOrdinal(
@@ -64,24 +64,29 @@ const ChallengeComplete = ({ step, slug }) => (
   </div>
 );
 
-const CodeSection = ({ isOutputError, setIsOutputError, data }) => (
-  <div className="d-lg-flex d-none">
-    <Desc data={data} />
-    <div className="challenge__code-editor">
-      <Code
-        isOutputError={isOutputError}
-        setIsOutputError={setIsOutputError}
-        code={data.contentDetails.codeOutline}
-      />
+const CodeSection = ({ isOutputError, setIsOutputError, data }) => {
+  return (
+    <div className="d-lg-flex d-none">
+      <Desc data={data} />
+      <div className="challenge__code-editor">
+        <Code
+          key={data.id}
+          isOutputError={isOutputError}
+          setIsOutputError={setIsOutputError}
+          code={data.codeOutline}
+          challengeId={data.id}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const TabCodeSection = ({
   toggleTab,
   activeTab,
   isOutputError,
   setIsOutputError,
+  data,
 }) => (
   <div className="d-block d-lg-none">
     <Tabs toggleTab={toggleTab} activeTab={activeTab} />
@@ -106,9 +111,11 @@ const TabCodeSection = ({
           aria-labelledby="pills-profile-tab"
         >
           <Code
+            key={data.id}
             isOutputError={isOutputError}
             setIsOutputError={setIsOutputError}
-            code={data.contentDetails.codeOutline}
+            code={data.codeOutline}
+            challengeId={data.id}
           />
         </div>
       )}
@@ -129,7 +136,7 @@ const ViewContainer = ({
           <ChallengeEditor
             currentChallengeIndex={currentChallengeIndex}
             step={data.step}
-            label={data.contentDetails.title}
+            label={data.title}
           >
             {children}
           </ChallengeEditor>
@@ -191,7 +198,11 @@ const index = ({ challengeData, slug }) => {
 
   if (currentPage % 2 === 1) {
     return (
-      <ViewContainer data={data} handleSubmit={handleSubmit}>
+      <ViewContainer
+        currentChallengeIndex={currentChallengeIndex}
+        data={data}
+        handleSubmit={handleSubmit}
+      >
         <ChallengeSuccess step={currentChallengeIndex + 1} />
       </ViewContainer>
     );
@@ -199,22 +210,26 @@ const index = ({ challengeData, slug }) => {
 
   return (
     <ViewContainer
+      key={currentChallengeIndex}
       currentChallengeIndex={currentChallengeIndex}
       data={data}
       handleSubmit={handleSubmit}
     >
       <>
         <CodeSection
+          key={currentChallengeIndex}
           isOutputError={isOutputError}
           setIsOutputError={setIsOutputError}
           data={data}
         />
 
         <TabCodeSection
+          key={currentChallengeIndex}
           toggleTab={toggleTab}
           activeTab={activeTab}
           isOutputError={isOutputError}
           setIsOutputError={setIsOutputError}
+          data={data}
         />
       </>
     </ViewContainer>

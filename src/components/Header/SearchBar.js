@@ -14,12 +14,19 @@ const SearchBar = ({ handleToggle }) => {
       source: "Top Navbar",
     });
     e.preventDefault();
-    if (e.keyCode === 13) {
+    if (document.documentElement.clientWidth > 992) {
+      if (e.keyCode === 13) {
+        router.push(`${searchPath}${value}`);
+      }
+      router.push(`${searchPath}${value}`);
+    } else {
+      if (e.keyCode === 13) {
+        router.push(`${searchPath}${value}`);
+        handleToggle();
+      }
       router.push(`${searchPath}${value}`);
       handleToggle();
     }
-    router.push(`${searchPath}${value}`);
-    handleToggle();
   };
 
   return (
@@ -57,11 +64,6 @@ const SearchBar = ({ handleToggle }) => {
           <div className="navbar-search__items w-border">
             <a href="#" className="navbar-search__item">
               <div className="d-flex align-items-center">
-                {/* <img
-                        src="images/notification-book.svg"
-                        alt="Book"
-                        className="mr-5x"
-                      /> */}
                 <div>
                   <p className="mb-0x text-medium">Analyze data with Python</p>
                   <span className="text-tiny text-medium color-text-caption">
@@ -72,11 +74,6 @@ const SearchBar = ({ handleToggle }) => {
             </a>
             <a href="#" className="navbar-search__item">
               <div className="d-flex align-items-center">
-                {/* <img
-                        src="images/notification-book-open.svg"
-                        alt="Book"
-                        className="mr-5x"
-                      /> */}
                 <div>
                   <p className="mb-0x text-medium">
                     Artificial Intelligence 101

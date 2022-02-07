@@ -8,8 +8,8 @@ const Desc = ({ onStartCodingClick, data }) => {
   return (
     <div className="challenge__detail">
       <ContentRender
-        courseTitle={data.contentDetails.title}
-        content={data.contentDetails.problemStatement}
+        courseTitle={data.title}
+        content={data.problemStatement}
         contentType={Constants.LESSON_TYPES.CHALLENGE}
       />
       <button

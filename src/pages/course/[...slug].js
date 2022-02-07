@@ -1,15 +1,17 @@
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 import SEO from "components/SEO";
-import CourseApi from "services/api/CourseApi";
+import CourseApi from "services/Marketing/CourseApi";
 import CourseComponent from "containers/Course";
 import Challenge from "containers/Challenge";
+import ChallengeApi from "services/Marketing/ChallengeApi";
+import PageNotFound from "pages/404";
+
 import {
+  CHALLENGE_SLUGS,
+  CUSTOM_CHALLENGE_DATA,
   CUSTOM_COURSE_DATA,
-  C_CHALLENGE_IDS,
-  FANCY_CARD_DATA,
-  PYTHON_CHALLENGE_IDS,
 } from "constants/consts";
 
 const CoursePage = (props) => {
@@ -27,36 +29,36 @@ const CoursePage = (props) => {
     fetchData();
   }, [props.slug]);
 
+  if (!props?.slugData?.data || props?.slugData?.data?.length < 1) {
+    return <PageNotFound />;
+  }
+
   return (
     <>
       <SEO
         path={`/courses/${props.slug}`}
         title={`${
-          router.query.slug[0] == CUSTOM_COURSE_DATA.PYTHON ||
-          router.query.slug[0] == CUSTOM_COURSE_DATA.C
-            ? customData?.data?.title
+          customData
+            ? props?.slugData?.data?.title
             : props?.slugData?.data?.title
-        } | Course`}
+        }`}
       />
 
       {props.isChallenge ? (
         <Challenge
           {...props}
+          slugData={props?.slugData}
           recommended={props.recommended}
-          custom={props?.slugData}
-          customText={FANCY_CARD_DATA}
+          custom={customData}
           challengeData={props.challengeData}
+          details={props?.slugData}
         />
       ) : (
         <CourseComponent
           {...props}
           custom={customData}
-          details={
-            router.query.slug[0] == CUSTOM_COURSE_DATA.PYTHON ||
-            router.query.slug[0] == CUSTOM_COURSE_DATA.C
-              ? customData
-              : props?.slugData
-          }
+          slugData={props?.slugData}
+          details={props?.slugData}
         />
       )}
     </>
@@ -69,35 +71,19 @@ export const getServerSideProps = async (context) => {
   try {
     const slugData = await CourseApi.getCourseSlug(slug);
     const recommended = await CourseApi.getRecommended();
+    const challengeData = await ChallengeApi.getChallengeBySlug(slug);
+    const isChallenge = challengeData?.data?.data?.length;
 
-    const isChallenge = slug.join("").toLowerCase().includes("challenge");
-
-    let challengeData = [];
     let toc = null;
 
-    if (isChallenge) {
-      const isPython = slug.join("").toLowerCase().includes("python");
-      const isC = slug.join("").toLowerCase().includes("c-programming");
-
-      let fetchIds = isPython ? PYTHON_CHALLENGE_IDS : [];
-
-      fetchIds = isC ? C_CHALLENGE_IDS : fetchIds;
-
-      challengeData = await Promise.all(
-        fetchIds.map(async (id) => {
-          const { data } = await CourseApi.getSection(id);
-
-          return data?.data?.[0];
-        })
-      );
-    } else {
+    if (!isChallenge) {
       toc = await CourseApi.getCourseToc(slugData.data.data.id);
     }
 
     return {
       props: {
         slug,
-        challengeData,
+        challengeData: challengeData.data.data,
         isChallenge,
         slugData: slugData.data,
         toc: toc?.data ?? {},
@@ -106,6 +92,8 @@ export const getServerSideProps = async (context) => {
       },
     };
   } catch (error) {
+    console.log(error);
+
     return {
       props: {
         slug,

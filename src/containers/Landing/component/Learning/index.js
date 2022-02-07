@@ -47,13 +47,13 @@ const Items = [
     id: 1,
     slug: "master-python-basics",
     fetchId: 1,
-    title: "Master Python Basics - Professional Certification",
+    title: "Become a Python Master",
   },
   {
     id: 2,
     slug: "master-c-basics",
     fetchId: 3,
-    title: "Master C Basics - Professional Certification",
+    title: "Become a C Master",
   },
   // {
   //   id: 3,
@@ -116,14 +116,14 @@ const Learnings = () => {
   };
 
   const options = {
-    // className: "center learning-slide",
+    className: "center learning-slide",
     centerMode: false,
     autoplay: true,
     autoplaySpeed: 5000,
     infinite: false,
     arrows: false,
     dot: false,
-    speed: 1000,
+    speed: 100,
     focusOnSelect: true,
     pauseOnHover: false,
     pauseOnFocus: false,
@@ -144,7 +144,7 @@ const Learnings = () => {
         breakpoint: 992,
         settings: {
           slidesToShow: 2,
-          centerMode: false,
+          centerMode: true,
         },
       },
       {
@@ -176,7 +176,7 @@ const Learnings = () => {
           />
         ))}
         <div className="card-path border p-6x d-flex align-items-center mx-md-3 mx-0">
-          <Link href="/package?type=learning">
+          <Link href="/catalog/learn">
             <a className="btn btn--w-icon btn--block btn--link mb-0x text-primary font-weight-bold">
               View all paths
               <FiArrowRight className="ml-1x" size={18} />
@@ -190,7 +190,7 @@ const Learnings = () => {
             <Cards
               idx={idx}
               {...a}
-              key={a.id}
+              key={a.slug}
               slug={a.slug}
               onTimeEnd={onTimeEnd}
               handleSelect={() => setActiveIndex(idx)}
@@ -198,7 +198,7 @@ const Learnings = () => {
             />
           ))}
           <div className="card-path border p-6x d-flex align-items-center learning__path ">
-            <Link href="/package?type=learning">
+            <Link href="/catalog/learn">
               <a className="btn btn--w-icon btn--block btn--link mb-0x text-primary font-weight-bold">
                 View all paths
                 <FiArrowRight className="ml-1x" size={18} />
@@ -207,7 +207,7 @@ const Learnings = () => {
           </div>
         </Slider>
         {/* <div className="d-md-none card-path border p-6x d-flex align-items-center mx-md-3 mx-auto mt-3 justify-content-center card__path--mobile">
-          <Link href="/package?type=learning">
+          <Link href="/catalog/learn">
             <a className="btn btn--w-icon btn--block btn--link mb-0x text-primary font-weight-bold">
               View all paths
               <FiArrowRight className="ml-1x" size={18} />
@@ -227,7 +227,7 @@ const Learnings = () => {
             <div className="col-lg-5 offset-md-2 fun-projects">
               <p className="mb-1x">What will I make in this course?</p>
               <h3 className="mb-5x text-white">{activeContent.title}</h3>
-              <p className="mb-0x d-none d-md-block">
+              <p className="mb-0x d-none d-lg-block">
                 {activeContent.description}
               </p>
             </div>
@@ -238,7 +238,7 @@ const Learnings = () => {
               </h3>
               <ol className="mb-0x">
                 {activeContent.courseBenefits.map((benefit) => (
-                  <li>{benefit}</li>
+                  <li key={benefit}>{benefit}</li>
                 ))}
               </ol>
             </div>

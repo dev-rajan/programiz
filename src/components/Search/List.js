@@ -4,7 +4,7 @@ import React from "react";
 const List = ({ contentInfo, linkTo }) => {
   const router = useRouter();
   const onClick = () => {
-    router.push(`/${linkTo}/${contentInfo.id}`);
+    router.push(`/${linkTo}/${contentInfo.slug}`);
   };
 
   return (
@@ -13,7 +13,7 @@ const List = ({ contentInfo, linkTo }) => {
         <div className="d-flex align-items-start">
           <img
             src={
-              contentInfo?.logo.length !== 0
+              contentInfo?.logo !== null && contentInfo?.logo.length !== 0
                 ? contentInfo?.logo
                 : "/images/noimage.png"
             }

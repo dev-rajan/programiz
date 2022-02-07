@@ -1,25 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FiChevronDown, FiMenu } from "react-icons/fi";
 import { GrClose } from "react-icons/gr";
 import Link from "next/link";
 
 import { DASHBOARD_APP_ROUTES } from "constants/app-routes";
 import DashboardLink from "components/DashboardLink";
+import { CatalogContext } from "contextApi/CatalogContext";
 
 import MenuItem from "./MenuItem";
 // import DropItem from "./DropItem";
 import SearchBar from "./SearchBar";
 import { Data } from "./Data";
 import CourseDropDown from "./CourseDropdown/CourseDropDown";
-import LearningApi from "services/api/LearningApi";
-import CourseApi from "services/api/CourseApi";
+import LearningApi from "services/Marketing/LearningApi";
+import CourseApi from "services/Marketing/CourseApi";
 
 const Headers = () => {
+  const { showDropDown, setShowDropDown } = useContext(CatalogContext);
+
   const minorRef = useRef(null);
 
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState(null);
-  const [showDropDown, setShowDropDown] = useState(false);
 
   const [course, setCourse] = useState([]);
   const [learn, setLearn] = useState([]);
@@ -55,6 +57,7 @@ const Headers = () => {
 
   const handleOutClick = () => {
     setMinor(false);
+    setShowDropDown(false);
   };
 
   useEffect(() => {
@@ -69,8 +72,21 @@ const Headers = () => {
     };
   }, [minorRef]);
 
+  useEffect(() => {
+    if (showDropDown) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [showDropDown]);
+
   const handleToggle = () => {
     setIsActive((prev) => !prev);
+    if (!isActive) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
   };
 
   const handleDropdown = () => {
@@ -97,7 +113,7 @@ const Headers = () => {
           </div>
           <Link href="/">
             <a
-              className="navbar-brand mr-0 mr-md-3"
+              className="navbar-brand "
               onClick={() => setSelected(null)}
               role="presentation"
             >
@@ -124,7 +140,7 @@ const Headers = () => {
               <GrClose className="mr-2 " size={24} />
             </div>
 
-            <ul className="navbar-nav mr-0 d-block d-lg-flex p-3 p-md-3 order-2 order-lg-1 ">
+            <ul className="navbar-nav mr-0 d-block d-lg-flex order-2 order-lg-1 ">
               {Data?.navlink?.map((a, idx) => (
                 <MenuItem
                   {...a}
@@ -146,7 +162,9 @@ const Headers = () => {
                 }}
               >
                 <a
-                  className={`nav-link dropdown-toggle `}
+                  className={`nav-link dropdown-toggle ${
+                    minor ? "dropdown-toggle__open" : ""
+                  } `}
                   onClick={handleDropdown}
                   id="navbarDropdown"
                   role="button"

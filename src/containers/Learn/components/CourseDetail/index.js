@@ -35,7 +35,7 @@ const Items = [
   },
 ];
 
-const CourseDetails = ({ path, custom, slug }) => {
+const CourseDetails = ({ path, custom, slug, toc }) => {
   const [show, setShow] = useState(false);
   const handleModal = () => {
     setShow(true);
@@ -47,13 +47,14 @@ const CourseDetails = ({ path, custom, slug }) => {
   return (
     <section className="course-detail">
       <div className="container">
-        <div className="row">
+        <div className={`row`}>
           <ShareModal show={show} setShow={setShow} />
 
-          <CourseFeatures slug={slug} path={path} custom={custom} />
+          <CourseFeatures slug={slug} path={path} custom={custom} toc={toc} />
 
           <div className="col-lg-4">
             <CardModal
+              slugData={path}
               path={`${DASHBOARD_APP_ROUTES.LEARNING_PATH}/${slug}`}
               Items={Items}
               handleModal={handleModal}

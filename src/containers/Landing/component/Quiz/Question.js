@@ -1,9 +1,16 @@
-import { data } from "jquery";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-distributed-forms";
 import { FiXCircle } from "react-icons/fi";
 
+import Highlight from "react-highlight";
+
+import getSummaryText from "utility/TextFormatter";
+import ContentRender from "components/SlateRender";
+
+import * as Constants from "constants/consts";
+
 const Question = ({
+  quizData,
   Data,
   Answers,
   isSelected,
@@ -14,12 +21,13 @@ const Question = ({
 }) => {
   const [isValue, setIsValue] = useState("");
   const [question, setQuestion] = useState("");
+  const [checkCorrect, setCheckCorrect] = useState(false);
 
   useEffect(() => {
     if (isCorrect) setCurrentPage(2);
   }, [isCorrect]);
 
-  const quizQuestion = `print(${Data.num1} - ${Data.num2})`;
+  const quizQuestion = quizData?.contentDetails?.title;
 
   const handleClick = () => {
     setIsValue(question);
@@ -27,20 +35,28 @@ const Question = ({
   };
 
   const handleCheck = () => {
-    const isAnswerCorrect = isSelected === 2;
+    const isAnswerCorrect = checkCorrect;
 
     if (isAnswerCorrect) {
       window.analytics.track(`Mock Quiz Correct Answer Submitted`, {
         question: quizQuestion,
-        answer_selected: Data.questions[isSelected - 1].question,
-        serial_number: Data.questions[isSelected - 1].sn,
+        answer_selected: getSummaryText(
+          JSON.parse(quizData?.contentDetails?.lsOptions[isSelected - 1].value),
+          "text"
+        ),
+        serial_number:
+          quizData?.contentDetails?.lsOptions[isSelected - 1].order,
         source: "Homepage Quiz",
       });
     } else {
       window.analytics.track(`Mock Quiz Wrong Answer Submitted`, {
         question: quizQuestion,
-        answer_selected: Data.questions[isSelected - 1].question,
-        serial_number: Data.questions[isSelected - 1].sn,
+        answer_selected: getSummaryText(
+          JSON.parse(quizData?.contentDetails?.lsOptions[isSelected - 1].value),
+          "text"
+        ),
+        serial_number:
+          quizData?.contentDetails?.lsOptions[isSelected - 1].order,
         source: "Homepage Quiz",
       });
     }
@@ -49,31 +65,37 @@ const Question = ({
     setIsValue(question);
   };
 
+  const questionText =
+    quizData?.contentDetails?.value &&
+    getSummaryText(JSON.parse(quizData?.contentDetails?.value), "text");
+
   return (
     <div className="quiz__wrapper">
-      <h3 className="color-secondary">
-        Step {Data.step}: {Data.label}
+      <h3 className="color-secondary mb-3">
+        Step {quizData?.step}: {Data.label}
       </h3>
-      <div className="quiz-question mb-4">{Data.title}</div>
-      <pre>
-        <code>
-          <span className="highlight">{quizQuestion}</span>
-        </code>
-      </pre>
+      <div className="quiz-question mb-3">
+        {quizData?.contentDetails?.question}
+      </div>
+      <span>
+        <Highlight language="python">{questionText}</Highlight>
+      </span>
       <div className="quiz-answer">
         <div className="row">
-          {Data?.questions?.map((a) => (
+          {quizData?.contentDetails?.lsOptions?.map((a) => (
             <Answers
               key={a.id}
               {...a}
-              id={a.id}
-              question={a.question}
+              sn={a.order}
+              question={a.value}
               isSelected={isSelected}
               setIsSelected={setIsSelected}
               setIsCorrect={setIsCorrect}
               isCorrect={isCorrect}
+              isRight={a.isCorrect}
               setIsValue={setIsValue}
               setQuestion={setQuestion}
+              setCheckCorrect={setCheckCorrect}
             />
           ))}
         </div>

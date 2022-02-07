@@ -19,14 +19,14 @@ const LanguageFilter = ({
     >
       <input
         type="checkbox"
-        className="align-middle"
+        className="align-middle d-lg-none"
         value={filter.slug}
         id={`flexCheckDefault-${id}-${filter.id}`}
         onChange={handleChange}
         checked={isChecked}
       />
       <label
-        className="form-check-label ml-1 align-middle"
+        className="form-check-label ml-1 align-middle cursor-pointer"
         htmlFor={`flexCheckDefault-${id}-${filter.id}`}
         role="presentation"
       >

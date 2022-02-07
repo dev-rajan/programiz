@@ -6,7 +6,6 @@ const Callout = () => (
     <div className="row align-items-center">
       <div className="col-md-8">
         <div className="d-flex align-items-center">
-          {/* <img src={IMAGES.iconBooks} alt="Books" className="mr-8x" /> */}
           <h3 className="callout__title color-white-main">
             Unlock all Courses by starting your FREE trial.
             <br />

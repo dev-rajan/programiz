@@ -3,12 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/dist/client/router";
 import { FiChevronDown } from "react-icons/fi";
 
-import CourseApi from "services/api/CourseApi";
+import CourseApi from "services/Marketing/CourseApi";
 
 import Courses from "./Courses";
 import Learning from "./Learning";
-import { ChallengeData, LearnData } from "containers/Landing/Data";
+import { LearnData } from "containers/Landing/Data";
 import Loading from "../Quiz/Loading";
+import LearningApi from "services/Marketing/LearningApi";
 
 const Options = [
   {
@@ -28,6 +29,7 @@ const Search = () => {
   const majorRef = useRef(null);
 
   const [courseData, setCourseData] = useState(null);
+  const [learnData, setLearnData] = useState(null);
 
   const [courseTitle, setCourseTitle] = useState("");
   const [learnTitle, setLearnTitle] = useState("Learning Path");
@@ -49,30 +51,34 @@ const Search = () => {
   };
 
   const learn = async () => {
-    setCourseTitle(LearnData[0].title);
-  };
+    const response = await LearningApi.getAll();
 
-  useEffect(() => {
-    if (learnTitle === "Learning Path") {
-      setCourseTitle(LearnData[0]?.title);
-      setSelectedLearning(LearnData[0]?.slug);
-    } else {
-      setCourseTitle(courseData?.data[0]?.title);
-      setSelectedCourse(courseData?.data[0]?.slug);
-    }
-  }, [learnTitle]);
+    setCourseTitle(response?.data?.data[0]?.title);
+    setLearnData(response?.data);
+    setSelectedLearning(response?.data?.data[0]?.slug);
+  };
 
   useEffect(async () => {
     course();
     learn();
   }, []);
 
+  useEffect(() => {
+    if (learnTitle === "Learning Path") {
+      setCourseTitle(learnData?.data[0]?.title);
+      setSelectedLearning(learnData?.data[0]?.slug);
+    } else {
+      setCourseTitle(courseData?.data[0]?.title);
+      setSelectedCourse(courseData?.data[0]?.slug);
+    }
+  }, [learnTitle]);
+
   const handleClick = (value) => {
-    if (value === "minor") {
+    if (value === "minor" && !isLoading) {
       setMinor(!minor);
       setMajor(false);
     }
-    if (value === "major") {
+    if (value === "major" && !isLoading) {
       setMajor(!major);
       setMinor(false);
     }
@@ -97,23 +103,25 @@ const Search = () => {
 
   const router = useRouter();
 
-  const Learning_URL = "/learning";
+  const Learning_URL = "/learn";
   const Challenge_URL = "/challenge";
   const Course_URL = "/course";
 
   const handleLearn = () => {
-    setIsLoading(true);
-    window.analytics.track(`Learn For Free Clicked`, {
-      category_selected: learnTitle,
-      name_selected: courseTitle,
-      source: "Home Page Top Of Fold Dropdown",
-    });
-    if (learnTitle === "Learning Path") {
-      router.push(`${Learning_URL}/${selectedLearning}`);
-    } else if (courseTitle === "Python Basics Challenges") {
-      router.push(`${Challenge_URL}/${selectedCourse}`);
-    } else {
-      router.push(`${Course_URL}/${selectedCourse}`);
+    if (courseTitle !== undefined) {
+      setIsLoading(true);
+      window.analytics.track(`Learn For Free Clicked`, {
+        category_selected: learnTitle,
+        name_selected: courseTitle,
+        source: "Home Page Top Of Fold Dropdown",
+      });
+      if (learnTitle === "Learning Path") {
+        router.push(`${Learning_URL}/${selectedLearning}`);
+      } else if (courseTitle === "Python Basics Challenges") {
+        router.push(`${Challenge_URL}/${selectedCourse}`);
+      } else {
+        router.push(`${Course_URL}/${selectedCourse}`);
+      }
     }
   };
 
@@ -143,7 +151,7 @@ const Search = () => {
                 }}
               >
                 <span className="fw-bold fs-4">{learnTitle}</span>
-                <FiChevronDown className="ml-auto" size={22} />
+                <FiChevronDown className="ml-auto" size={28} />
                 <ul
                   className={`${minor ? "minor__list show" : `minor__list `}`}
                 >
@@ -174,7 +182,7 @@ const Search = () => {
                 }}
               >
                 <span className=" fs-4">{courseTitle}</span>
-                <FiChevronDown className="ml-auto" size={22} />
+                <FiChevronDown className="ml-auto" size={26} />
                 <div
                   className={`${major ? "major__list show" : `major__list `}`}
                 >
@@ -193,21 +201,10 @@ const Search = () => {
                           />
                         ))
                         .slice(0, 4)}
-                      {/* {ChallengeData?.map((a, idx) => (
-                        <Courses
-                          {...a}
-                          key={a.id}
-                          slug={a.slug}
-                          idx={idx}
-                          setCourseTitle={setCourseTitle}
-                          setSelectedLearning={setSelectedLearning}
-                          setSelectedCourse={setSelectedCourse}
-                        />
-                      ))} */}
                     </>
                   ) : (
                     <>
-                      {LearnData?.map((a, idx) => (
+                      {learnData?.data?.map((a, idx) => (
                         <Courses
                           {...a}
                           key={a.id}

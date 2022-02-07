@@ -35,7 +35,7 @@ const Completed = ({
   return (
     <div className="text-center completed__box">
       <div className="image">
-        <Image src={img} />
+        <Image alt={title} title={title} src={img} />
       </div>
       <div className="row justify-content-center">
         <div className="col-lg-10">

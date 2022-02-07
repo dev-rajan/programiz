@@ -11,7 +11,7 @@ const Cards = ({ title, onTimeEnd, isActive, handleSelect, idx }) => (
     tabIndex="0"
     className={`card-path border why-card pointer ${
       isActive ? "current" : ""
-    } p-6x d-flex align-items-center mb-6x`}
+    } p-6x d-flex align-items-center`}
     style={{ height: "150px" }}
   >
     <p>{title}</p>

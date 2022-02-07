@@ -1,11 +1,12 @@
 import React from "react";
+import CourseHeros from "../CourseHero";
 
 import Banner from "./Banner";
 import CourseSection from "./CourseSection";
 import FancyCard from "./FancyCard";
 import Testimonial from "./Testimonial";
 
-const CourseFeatures = ({ toc, custom, slug }) => {
+const CourseFeatures = ({ toc, custom, slug, details }) => {
   const courseSections = toc?.data?.sections?.map((section) => {
     return (
       <CourseSection courseSlug={slug} key={section.id} section={section} />
@@ -14,6 +15,8 @@ const CourseFeatures = ({ toc, custom, slug }) => {
 
   return (
     <div className="col-lg-8 course-column">
+      <CourseHeros customData={custom} details={details} category="COURSE" />
+
       <FancyCard custom={custom} />
 
       <div className="course-section">

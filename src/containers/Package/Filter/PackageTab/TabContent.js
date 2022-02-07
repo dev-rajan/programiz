@@ -2,10 +2,11 @@ import React from "react";
 
 import Cards from "./Cards";
 import { FILTER_TYPES } from "./Data";
+import { CATEGORY } from "constants/consts";
 
 const TabContent = ({ filterType, course, learn, challenge }) => {
   const Course_URL = "/course";
-  const Learn_URL = "/learning";
+  const Learn_URL = "/learn";
 
   return (
     <div className="tab-content" id="v-pills-tabContent">
@@ -17,13 +18,28 @@ const TabContent = ({ filterType, course, learn, challenge }) => {
           aria-labelledby="v-pills-all-tab"
         >
           {course?.map((a) => (
-            <Cards link={`${Course_URL}/${a.slug}`} key={a.slug} {...a} />
+            <Cards
+              link={`${Course_URL}/${a.slug}`}
+              key={a.slug}
+              {...a}
+              category={CATEGORY.course_category}
+            />
           ))}
           {learn?.map((a) => (
-            <Cards link={`${Learn_URL}/${a.slug}`} key={a.slug} {...a} />
+            <Cards
+              link={`${Learn_URL}/${a.slug}`}
+              key={a.slug}
+              {...a}
+              category={CATEGORY.learn_category}
+            />
           ))}
           {challenge?.map((a) => (
-            <Cards link={`${Course_URL}/${a.slug}`} key={a.slug} {...a} />
+            <Cards
+              link={`${Course_URL}/${a.slug}`}
+              key={a.slug}
+              {...a}
+              category={CATEGORY.challenge_category}
+            />
           ))}
         </div>
       )}
@@ -41,6 +57,7 @@ const TabContent = ({ filterType, course, learn, challenge }) => {
               link={`${Learn_URL}/${a.slug}`}
               slug={a.slug}
               {...a}
+              category={CATEGORY.learn_category}
             />
           ))}
         </div>
@@ -59,6 +76,7 @@ const TabContent = ({ filterType, course, learn, challenge }) => {
               link={`${Course_URL}/${a.slug}`}
               slug={a.slug}
               {...a}
+              category={CATEGORY.course_category}
             />
           ))}
         </div>
@@ -77,6 +95,7 @@ const TabContent = ({ filterType, course, learn, challenge }) => {
               link={`${Course_URL}/${a.slug}`}
               slug={a.slug}
               {...a}
+              category={CATEGORY.challenge_category}
             />
           ))}
         </div>

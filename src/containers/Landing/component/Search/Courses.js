@@ -29,9 +29,11 @@ const Courses = ({
     return "green";
   };
 
+  if (title === "C++ Programmer" || title === "Java Programmer") return null;
+
   return (
     <div
-      className={`col-lg-6 px-0 ${
+      className={`mw-100 px-0 ${
         title === "C++ Programmer" || title === "Java Programmer"
           ? "d-none"
           : null
@@ -47,10 +49,12 @@ const Courses = ({
         )} `}
       >
         <img
-          className="mr-2"
-          src={logo.length !== 0 ? logo : "/images/noimage.png"}
-          alt="Hero Img"
-          title="Hero Img"
+          className="mr-3"
+          src={
+            logo !== null && logo.length !== 0 ? logo : "/images/noimage.png"
+          }
+          alt={title}
+          title={title}
         />
         <span className="fs-4">{title}</span>
       </div>

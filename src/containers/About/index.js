@@ -35,7 +35,11 @@ const About = ({ title = "Transforming People into Tech Professionals!" }) => (
     <HeroSection title={title} extraClass="hero-about" />
 
     {/* our mission section */}
-    <Section title={Item?.mission?.title} desc={Item?.mission?.desc} />
+    <Section
+      title={Item?.mission?.title}
+      desc={Item?.mission?.desc}
+      margin="m16"
+    />
 
     {/* our story section */}
     <Section

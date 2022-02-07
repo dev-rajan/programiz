@@ -5,6 +5,9 @@ const useForm = (validate) => {
   const [response, setResponse] = useState(false);
 
   const [values, setValues] = useState({
+    name: "",
+    message: "",
+    queryType: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -24,6 +27,9 @@ const useForm = (validate) => {
     });
     if (isLoading === true) {
       setIsLoading(false);
+    }
+    if (value.length > 0) {
+      setErrors(false);
     }
   };
 
@@ -48,12 +54,27 @@ const useForm = (validate) => {
     setErrors(validate(values));
   };
 
+  const handleContact = (e) => {
+    e.preventDefault();
+    if (
+      values.email.length > 0 &&
+      values.name.length > 0 &&
+      values.message.length > 0 &&
+      values.queryType.length > 0
+    ) {
+      setIsLoading(true);
+    } else setErrors(validate(values));
+  };
+
   return {
     handleChange,
+    handleContact,
     handleJoin,
     handleSubmit,
+    setValues,
     values,
     errors,
+    setErrors,
     isLoading,
     response,
     setResponse,

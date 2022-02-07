@@ -8,11 +8,11 @@ import Coding from "./component/Coding";
 import Search from "./component/Search";
 import DiscordCard from "./DiscordCard";
 
-const Landing = () => (
+const Landing = ({ quizData }) => (
   <>
     <Hero />
     <Search />
-    <Quiz />
+    <Quiz quizData={quizData} />
     <Learning />
     <DiscordCard />
     <WhyProgramiz />

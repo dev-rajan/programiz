@@ -16,7 +16,7 @@ const Footers = ({ footerClass }) => {
           </div>
         </div>
       </footer>
-      <div className={`footer-bottom py-6x ${footerClass}`}>
+      <div className={`footer-bottom py-4x ${footerClass}`}>
         <div className="container">
           <div className="footer-bottom__content d-flex justify-content-between align-items-center">
             <p className="fs-body14 mb-0x text-center text-sm-left">

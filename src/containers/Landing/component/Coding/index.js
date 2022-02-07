@@ -27,7 +27,7 @@ const Codings = () => (
             className="btn btn--white btn--sm code__btn btn--w-icon px-9x d-flex justify-content-between d-md-inline-flex "
           >
             <span>Sign Up</span>
-            <FiArrowRight className="btn-icon ml-2x" size={20} />
+            <FiArrowRight className="btn-icon ml-2x" size={24} />
           </DashboardLink>
         </div>
       </div>

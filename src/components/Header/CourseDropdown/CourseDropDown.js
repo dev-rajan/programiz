@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { COURSE_FILTERS } from "containers/Package/Filter/PackageTab/Data";
 
 import CourseType from "./CourseType";
 import DropdownMenuItems from "./DropdownMenuItems";
+import { CatalogContext } from "contextApi/CatalogContext";
 
-const CourseDropDown = ({
-  course,
-  learn,
-  challenge,
-  handleDropdown,
-  setMinor,
-}) => {
+const CourseDropDown = ({ handleDropdown, setMinor }) => {
+  const { course, learn, challenge } = useContext(CatalogContext);
   const [selected, setSelected] = useState(COURSE_FILTERS[1]?.title);
-  const url = "/package?type=";
+  const url = "/catalog/";
   const Course_URL = "/course";
-  const Learn_URL = "/learning";
+  const Learn_URL = "/learn";
 
   return (
     <div className="dropdown-menu show">
@@ -32,7 +28,7 @@ const CourseDropDown = ({
           )).slice(1)}
         </li>
       </ul>
-      <div className="dropdown-menu__content">
+      <div className="dropdown-menu__content d-flex flex-column justify-content-between">
         <div className="dropdown-menu__list">
           {selected === COURSE_FILTERS[1].title && (
             <>
@@ -42,6 +38,7 @@ const CourseDropDown = ({
                   {...a}
                   key={a.id}
                   handleDropdown={handleDropdown}
+                  courseCount={a?.levels?.[0]?.courses?.length}
                 />
               ))}
             </>
@@ -72,9 +69,9 @@ const CourseDropDown = ({
           )}
         </div>
 
-        <div className="dropdown-menu__more">
+        <div className="dropdown-menu__more d-flex align-items-center justify-content-end">
           {selected === COURSE_FILTERS[1].title && (
-            <Link href={`${url}learning`}>
+            <Link href={`${url}learn`}>
               <a
                 className="btn btn--link text-dark btn-xs"
                 onClick={handleDropdown}
@@ -84,7 +81,7 @@ const CourseDropDown = ({
             </Link>
           )}
           {selected === COURSE_FILTERS[2].title && (
-            <Link href={`${url}courses`}>
+            <Link href={`${url}course`}>
               <a
                 className="btn btn--link text-dark btn-xs"
                 onClick={handleDropdown}
@@ -94,7 +91,7 @@ const CourseDropDown = ({
             </Link>
           )}
           {selected === COURSE_FILTERS[3].title && (
-            <Link href={`${url}challenges`}>
+            <Link href={`${url}challenge`}>
               <a
                 className="btn btn--link text-dark btn-xs"
                 onClick={handleDropdown}

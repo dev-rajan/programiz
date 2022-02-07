@@ -1,7 +1,8 @@
 {
   "data": {
-    "title": "Python Basics Challenges",
-    "summary": "Python Basics Challenges help you apply your theoretical knowledge to solve various sets of Python problems. These challenges will help you develop the programming mindset where you will learn to approach, solve and debut any programming challenges.\nMaster the basics of Python programming by solving 60+ challenges in real-time.",
+    "title": "Python Basics Coding Challenges",
+    "shareModalClassName": "modal-top--30",
+    "summary": "Python Basics Challenges help you apply your theoretical knowledge to solve various sets of Python problems. These challenges will help you develop the programming mindset where you will learn to approach, solve and debut any programming challenges.</br></br>Master the basics of Python programming by solving 60+ challenges in real-time.",
     "card1": {
       "id": 1,
       "title": "Combine learning with practice",

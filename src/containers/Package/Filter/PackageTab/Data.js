@@ -1,8 +1,8 @@
 export const FILTER_TYPES = {
   ALL: "all",
-  COURSES: "courses",
-  LEARNING: "learning",
-  CHALLENGES: "challenges",
+  COURSES: "course",
+  LEARNING: "learn",
+  CHALLENGES: "challenge",
 };
 
 export const COURSE_FILTERS = [
@@ -23,7 +23,7 @@ export const COURSE_FILTERS = [
   },
   {
     id: 3,
-    title: "Challanges",
+    title: "Challenges",
     slug: FILTER_TYPES.CHALLENGES,
   },
 ];
@@ -32,12 +32,12 @@ export const LANGUAGE_FILTERS = [
   {
     id: 3,
     title: "Python",
-    slug: "Python",
+    slug: "python",
   },
   {
     id: 4,
     title: "C ",
-    slug: "C",
+    slug: "c",
   },
   // {
   //   id: 5,

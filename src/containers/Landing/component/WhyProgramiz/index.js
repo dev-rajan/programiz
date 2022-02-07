@@ -14,7 +14,7 @@ const Items = {
     {
       id: 1,
       title: "Interactive and Highly Intuitive Lessons",
-      image: "images/browser-example.png",
+      image: "images/browser-example.svg",
     },
     {
       id: 2,
@@ -79,7 +79,7 @@ const Index = () => {
     autoplaySpeed: 5000,
     slidesToShow: 2,
     slidesToScroll: 1,
-    speed: 1000,
+    speed: 100,
     focusOnSelect: true,
     pauseOnHover: false,
     pauseOnFocus: false,
@@ -130,7 +130,7 @@ const Index = () => {
           <div className="col-xl-9 px-5 px-md-0">
             <Images tab={Items?.data[activeIndex]} />
           </div>
-          <div className=" mt-4 w-100">
+          {/* <div className=" mt-4 w-100">
             <DashboardLink
               title="Demo Product with Free Trial"
               href={DASHBOARD_APP_ROUTES.SIGNUP}
@@ -140,7 +140,7 @@ const Index = () => {
               <FiPlayCircle className="btn-icon mr-2x " size={20} />
               Demo Product with Free Trial
             </DashboardLink>
-          </div>
+          </div> */}
         </div>
         <div className="d-md-none">
           <Slider
@@ -170,7 +170,7 @@ const Index = () => {
               ))}
             </Slider>
           </div>
-          <div className=" mt-2 w-100">
+          {/* <div className=" mt-2 w-100">
             <DashboardLink
               title="Demo Product with Free Trial"
               href={DASHBOARD_APP_ROUTES.SIGNUP}
@@ -180,7 +180,7 @@ const Index = () => {
               <FiPlayCircle className="btn-icon mr-2x" size={20} />
               Demo Product with Free Trial
             </DashboardLink>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

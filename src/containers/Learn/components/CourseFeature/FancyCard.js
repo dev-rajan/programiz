@@ -9,16 +9,18 @@ const FancyCard = ({ custom }) => {
         alt="arrow down"
         title="arrow down"
       />
-      <div className="card border shadow-none py-13x px-8x">
+      <div className="card border shadow-none card__box">
         <div className="row">
-          <div className="col-md-6 pr-10x-md mb-10x mb-0x-md border-md-right">
+          <div className="col-md-6 card__list">
             <div className="d-flex align-items-start">
-              <img
-                src="/images/learning-1.svg"
-                alt="Learn"
-                title="Learn"
-                className="mr-2x"
-              />
+              <div className="learn__image">
+                <img
+                  src="/images/learning-1.svg"
+                  alt="Learn"
+                  title="Learn"
+                  className="mr-2x"
+                />
+              </div>
               <div>
                 <p className="text-bold mb-2x text-primary-dark">
                   {custom !== ""
@@ -33,14 +35,16 @@ const FancyCard = ({ custom }) => {
               </div>
             </div>
           </div>
-          <div className="col-md-6 px-10x-md">
+          <div className="col-md-6 card__list">
             <div className="d-flex align-items-start">
-              <img
-                src="/images/learning-2.svg"
-                alt="Learn"
-                title="Learn"
-                className="mr-2x"
-              />
+              <div className="learn__image">
+                <img
+                  src="/images/learning-2.svg"
+                  alt="Learn"
+                  title="Learn"
+                  className="mr-2x"
+                />
+              </div>
               <div>
                 <p className="text-bold mb-2x text-primary-dark">
                   {custom !== ""
@@ -49,7 +53,7 @@ const FancyCard = ({ custom }) => {
                 </p>
                 <p className="mb-1x fs-body14">
                   {custom !== ""
-                    ? custom?.data?.card1?.title
+                    ? custom?.data?.card2?.desc
                     : "Put all you have learned into practice by creating projects."}
                 </p>
                 <p className="text-bold color-secondary mb-0">

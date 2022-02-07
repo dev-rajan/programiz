@@ -20,7 +20,39 @@
     margin-bottom: 2rem;
   }
 }
-.quiz-answer__item:not(.active):hover{
+
+.quiz-answer__item:not(.active):hover {
   background-color: #e3ebfe;
 }
 
+
+@media (min-width: $lg-device) {
+  .modal-top--30 {
+    .start-learning-card {
+      margin-top: -30em;
+    }
+  }
+
+  .modal-top--34 {
+    .start-learning-card {
+      margin-top: -34em;
+    }
+  }
+
+  .modal-top--32 {
+    .start-learning-card {
+      margin-top: -32em;
+    }
+  }
+
+  .modal-top--29 {
+    .start-learning-card {
+      margin-top: -29em;
+    }
+  }
+}
+
+.no-scroll,
+.winning-image {
+  overflow: hidden;
+}

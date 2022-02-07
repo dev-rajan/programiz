@@ -13,19 +13,64 @@ const PackageTabs = ({
   course: courses,
   learn: learningPaths,
   challenge: challenges,
+  language: initialLanguage,
+  courseType: initialCourseType,
 }) => {
+  const router = useRouter();
+
   const [filteredCourses, setFilteredCourses] = useState(courses);
   const [filteredLearningPaths, setFilteredLearningPath] =
     useState(learningPaths);
   const [filteredChallenges, setFilteredChallenges] = useState(challenges);
 
-  const [languageFilters, setLanguageFilters] = useState([]);
-  const [filterType, setFilterType] = useState(FILTER_TYPES.ALL);
+  const [languageFilters, setLanguageFilters] = useState(
+    initialLanguage ? [initialLanguage] : []
+  );
+  const [filterType, setFilterType] = useState(
+    initialCourseType || FILTER_TYPES.ALL
+  );
   const [mobileFilters, setMobileFilters] = useState([]);
 
   const [mobileFilterActive, setIsMobileFilterActive] = useState(false);
 
-  const router = useRouter();
+  const getUrl = (lang, course) => {
+    let url = "";
+
+    if (lang) {
+      url = `/catalog/languages/${lang}`;
+
+      if (course) {
+        url = `${url}/${course}`;
+      }
+
+      return url;
+    }
+
+    if (course) {
+      return `/catalog/${course}`;
+    }
+
+    return "/catalog";
+  };
+
+  const redirectToPage = () => {
+    const selectedCourse = filterType === FILTER_TYPES.ALL ? null : filterType;
+    const selectedLanguage = languageFilters[0];
+
+    let url = getUrl(selectedLanguage, selectedCourse);
+
+    if (url === router.pathname) {
+      return;
+    }
+
+    router.replace(
+      {
+        pathname: url,
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
 
   const handleFilterSelection = (type) => {
     setFilterType(type);
@@ -35,7 +80,7 @@ const PackageTabs = ({
     if (mobileFilters.includes(lang)) {
       setMobileFilters(mobileFilters.filter((l) => l !== lang));
     } else {
-      setMobileFilters([...mobileFilters, lang]);
+      setMobileFilters([lang]);
     }
   };
 
@@ -43,7 +88,7 @@ const PackageTabs = ({
     if (languageFilters.includes(lang)) {
       setLanguageFilters(languageFilters.filter((l) => l !== lang));
     } else {
-      setLanguageFilters([...languageFilters, lang]);
+      setLanguageFilters([lang]);
     }
   };
 
@@ -62,24 +107,10 @@ const PackageTabs = ({
     setIsMobileFilterActive(false);
   };
 
-  const addFiltersToParams = () => {
-    router.replace(
-      {
-        pathname: router.pathname,
-        query: {
-          type: filterType,
-          lang: languageFilters,
-        },
-      },
-      undefined,
-      { shallow: true }
-    );
-  };
-
   const getDataCount = (type) => {
-    const coursesCount = courses.length;
-    const learningPathsCount = learningPaths.length;
-    const challengeCount = challenges.length;
+    const coursesCount = courses?.length ?? 0;
+    const learningPathsCount = learningPaths?.length ?? 0;
+    const challengeCount = challenges?.length ?? 0;
 
     if (type === FILTER_TYPES.ALL) {
       return coursesCount + learningPathsCount + challengeCount;
@@ -95,13 +126,13 @@ const PackageTabs = ({
   };
 
   useEffect(() => {
-    addFiltersToParams();
+    redirectToPage();
   }, [languageFilters, filterType]);
 
   useEffect(() => {
     const _filteredCourses = courses?.filter?.((course) =>
       languageFilters.length
-        ? languageFilters.includes(course.language.title)
+        ? languageFilters.includes(course.language.title.toLowerCase())
         : true
     );
 
@@ -109,7 +140,7 @@ const PackageTabs = ({
       languageFilters.length
         ? languageFilters.some((languageFilter) =>
             learningPath.languages.some((language) =>
-              language.title.includes(languageFilter)
+              language.title.toLowerCase().includes(languageFilter)
             )
           )
         : true
@@ -117,7 +148,7 @@ const PackageTabs = ({
 
     const _filteredChallenges = challenges?.filter?.((challenge) =>
       languageFilters.length
-        ? languageFilters.includes(challenge.language.title)
+        ? languageFilters.includes(challenge.language.title.toLowerCase())
         : true
     );
 
@@ -163,6 +194,8 @@ const PackageTabs = ({
   }, []);
 
   const filteredData = useMemo(() => {
+    if (!courses) return [];
+
     if (filterType === FILTER_TYPES.ALL) {
       return [
         ...filteredCourses,
@@ -206,15 +239,22 @@ const PackageTabs = ({
             aria-orientation="vertical"
           >
             <div className="filter__primary d-flex flex-lg-column justify-content-center">
-              {COURSE_FILTERS?.map((courseFilter) => (
-                <CourseTypeFilter
-                  key={courseFilter.id}
-                  handleSelect={handleFilterSelection}
-                  dataCount={getDataCount(courseFilter.slug)}
-                  isActive={courseFilter.slug === filterType}
-                  filterItem={courseFilter}
-                />
-              ))}
+              {COURSE_FILTERS?.map((courseFilter) => {
+                const isAllFilter = courseFilter.slug === FILTER_TYPES.ALL;
+                const isActive = filterType
+                  ? filterType === courseFilter.slug
+                  : isAllFilter;
+
+                return (
+                  <CourseTypeFilter
+                    key={courseFilter.id}
+                    handleSelect={handleFilterSelection}
+                    dataCount={getDataCount(courseFilter.slug)}
+                    isActive={isActive}
+                    filterItem={courseFilter}
+                  />
+                );
+              })}
             </div>
             <div
               className={`filter__secondary py-3 py-lg-0 ${
@@ -258,7 +298,7 @@ const PackageTabs = ({
               <div className="d-flex justify-content-around align-items-center mt-4 d-lg-none ">
                 <span
                   className="px-4 btn--filter btn--filter-link"
-                  onClick={() => setReset(true)}
+                  onClick={() => toggleMobileFilter()}
                   role="presentation"
                 >
                   Cancel

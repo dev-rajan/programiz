@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import AceEditor from "react-ace-cdn";
 import { Button } from "react-distributed-forms";
 
-import ChallengeApi from "services/api/ChallengeApi";
+import AceEditor from "components/CodeEditor";
+import ChallengeApi from "services/Marketing/ChallengeApi";
 import Loading from "containers/Landing/component/Quiz/Loading";
 
-const Code = ({ isOutputError, setIsOutputError, code }) => {
+function getExpectedValue(testValues) {
+  const errorValue = testValues.find((testValue) => !testValue.testPassed);
+
+  return errorValue?.output;
+}
+
+const Code = ({ isOutputError, setIsOutputError, code, challengeId }) => {
   const [show, setShow] = useState(true);
-  const [isClicked, setIsClicked] = useState("");
-  const [item, setItem] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+  const [item, setItem] = useState(null);
   const [editor, setEditor] = useState(null);
 
   const [codeValue, setCodeValue] = useState(code);
@@ -24,7 +30,7 @@ const Code = ({ isOutputError, setIsOutputError, code }) => {
 
   const submitCode = async () => {
     const data = {
-      challengeId: "1",
+      challengeId: challengeId,
       saveProgress: false,
       code: codeValue,
     };
@@ -33,15 +39,22 @@ const Code = ({ isOutputError, setIsOutputError, code }) => {
       const response = await ChallengeApi.post(data);
       const res = response.data;
 
-      const actualOutput = parseInt(res?.data?.actualOutput, 10);
-      const expectedOutput = parseInt(res?.data?.expectedOutput, 10);
+      const actualOutput = parseFloat(res?.data?.actualOutput, 10);
+      const expectedValue = getExpectedValue(res?.data?.tests);
+      let expectedOutput = expectedValue;
+
+      if (!expectedValue) {
+        expectedOutput = actualOutput;
+      }
 
       setItem(actualOutput);
 
       setIsOutputError(!(actualOutput === expectedOutput));
       setOutput({ actualOutput, expectedOutput });
+      setShow(false);
     } catch (e) {
       setIsOutputError(false);
+      setOutput({ actualOutput: 0, expectedOutput: 0 });
       setShow(false);
     }
   };
@@ -55,22 +68,20 @@ const Code = ({ isOutputError, setIsOutputError, code }) => {
     <>
       <div className="editor__header" />
       <div className="challenge__editor">
-        {typeof window != "undefined" && (
-          <AceEditor
-            onLoad={(e) => setEditor(e)}
-            mode="python"
-            theme="monokai"
-            value={codeValue}
-            onChange={onChange}
-            highlightActiveLine
-            name="challenge-editor"
-            fontSize="14px"
-            editorProps={{ $blockScrolling: true, wrap: 1 }}
-            readOnly={isOutputError || !show}
-            focus
-          />
-        )}
-        <div className="editor__footer">
+        <AceEditor
+          onLoad={(e) => setEditor(e)}
+          mode="python"
+          theme="monokai"
+          value={codeValue}
+          onChange={onChange}
+          highlightActiveLine
+          name="challenge-editor"
+          fontSize="14px"
+          editorProps={{ $blockScrolling: true, wrap: 1 }}
+          readOnly={isOutputError || !show}
+          focus
+        />
+        <div className="editor__footer w-100">
           <div
             className={
               show ? `d-flex justify-content-end px-10x mb-10x ` : "d-none "
@@ -138,14 +149,14 @@ const Code = ({ isOutputError, setIsOutputError, code }) => {
                     setIsClicked(false);
                   }}
                   type="button"
-                  className="btn btn--primary btn--sm  w-sm-100 "
+                  className="btn btn--primary btn--sm  w-sm-100  "
                   name="next"
                 >
                   Retry
                 </button>
               ) : (
                 <Button className="btn btn--primary btn--sm" name="next">
-                  Submit & Go to Next Step
+                  Submit &amp; Go to Next Step
                 </Button>
               )}
             </div>

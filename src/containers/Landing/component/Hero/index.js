@@ -5,24 +5,24 @@ const Heros = () => (
     <div className="container">
       <div className="hero__content">
         <h2 className="hero__title">
-          Learn to code &amp; create a job winning portfolio.
+          learn to code & create a job winning portfolio.
         </h2>
         <div className="hero__image ml-n3">
           {/* <img src={IMAGES.heroImg} alt="Hero Img" /> */}
           <img
             src="images/hero-img.svg"
             className="d-none d-lg-block img-fluid"
-            alt="Hero Img"
-            title="Hero Img"
+            alt="Learn to code & create a job winning portfolio."
+            title="Learn to code & create a job winning portfolio."
           />
           <img
             className="d-block d-lg-none banner__image"
             src="images/banner-mobile.svg"
-            alt="Hero Img"
-            title="Hero Img"
+            alt="Learn to code & create a job winning portfolio."
+            title="Learn to code & create a job winning portfolio."
           />
         </div>
-        <div className="hero__desc  py-md-0 mr-5 mr-md-0">
+        <div className="hero__desc hero__toolset py-md-0 mr-5 mr-md-0">
           <ul>
             <li>
               {/* <img src="{IMAGES.iconSelfPaced}" alt="Self-paced Courses" /> */}

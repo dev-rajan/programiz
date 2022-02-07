@@ -15,7 +15,7 @@ const ShareModal = ({ show, setShow }) => {
   const segmentForSocialMedia = (e, platform) => {
     window.analytics.track(`Learning Path Shared`, {
       socialmedia_platform: platform,
-      learning_path: LearnData[url.slice(-1) - 1].title,
+      learning_path: LearnData[url.slice(-1) - 1]?.title,
     });
   };
 
@@ -81,7 +81,7 @@ const ShareModal = ({ show, setShow }) => {
                 <span>or copy link</span>
               </div>
               <div className="link__block mb-4 mt-3 d-flex  w-100 p-2 rounded">
-                <div className="w-100 text-left">{url}</div>
+                <div className="w-100 text-left truncate">{url}</div>
                 <div className="ms-auto">
                   <span
                     className="text-primary pointer btn-link"

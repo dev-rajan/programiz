@@ -2,7 +2,7 @@ import React from "react";
 
 import Progress from "./Progress";
 import { DASHBOARD_APP_ROUTES } from "constants/app-routes";
-import DashboardLink from "components/DashboardLink";
+import { DashboardRoute } from "components/DashboardLink";
 
 const Cards = ({ title, slug, onTimeEnd, isActive, handleSelect, idx }) => {
   const onClick = () => {
@@ -29,14 +29,16 @@ const Cards = ({ title, slug, onTimeEnd, isActive, handleSelect, idx }) => {
         <p className="mb-0">{title}</p>
         {isActive ? (
           <>
-            <DashboardLink
+            <DashboardRoute
               title="Enroll for Free"
-              href={DASHBOARD_APP_ROUTES.SIGNUP}
+              href={
+                idx === 1 ? DASHBOARD_APP_ROUTES.C : DASHBOARD_APP_ROUTES.PYTHON
+              }
               onClick={onClick}
               className="btn btn--primary btn--sm btn--block mt-3 text-white"
             >
               Enroll for Free
-            </DashboardLink>
+            </DashboardRoute>
             <Progress onTimeEnd={onTimeEnd} />
           </>
         ) : (

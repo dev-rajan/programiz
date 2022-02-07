@@ -5,14 +5,20 @@ import CourseDetails from "./components/CourseDetail";
 import CourseHeros from "./components/CourseHero";
 import CourseLearnings from "./components/CourseLearning";
 
-const Course = ({ toc, recommended, custom, details, slug, challengeData }) => {
+const Course = ({ toc, recommended, custom, details, slug, slugData }) => {
   return (
     <>
       {/* Hero section */}
-      <CourseHeros details={details} category="COURSE" />
+      {/* <CourseHeros customData={custom} details={details} category="COURSE" /> */}
 
       {/* Detail  */}
-      <CourseDetails slug={slug} toc={toc} custom={custom} />
+      <CourseDetails
+        slug={slug}
+        toc={toc}
+        custom={custom}
+        slugData={slugData}
+        details={details}
+      />
 
       {/* coding  */}
       <Codings />

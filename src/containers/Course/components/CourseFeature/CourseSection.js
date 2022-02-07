@@ -1,5 +1,6 @@
 import React from "react";
 import { FiChevronRight } from "react-icons/fi";
+import Link from "next/link";
 
 import { DASHBOARD_APP_ROUTES } from "constants/app-routes";
 import DashboardLink from "components/DashboardLink";
@@ -10,13 +11,15 @@ const CourseSection = ({ section, courseSlug }) => {
   const isFirstChapter = section.step === 1;
   const [displayContent, setDisplayContent] = React.useState(isFirstChapter);
 
-  const sectionContents = section.sectionContent.map((sectionContent) => (
+  const sectionContents = section?.sectionContent?.map((sectionContent) => (
     <SectionContent
       courseSlug={courseSlug}
       key={sectionContent.id}
       sectionContent={sectionContent}
     />
   ));
+
+  const startCourseSlug = `${courseSlug}/${section?.sectionContent?.[0]?.slug}`;
 
   return (
     <li className="accordion__item">
@@ -39,13 +42,18 @@ const CourseSection = ({ section, courseSlug }) => {
         </h5>
         <FiChevronRight className="title__icon" size={24} />
         {isFirstChapter && (
-          <DashboardLink
-            title="Start this Course"
-            href={`${DASHBOARD_APP_ROUTES.COURSE}/${courseSlug}`}
-            className="btn btn--primary btn--light btn--sm outline btn-course-start"
-          >
-            Start this Course
-          </DashboardLink>
+          <>
+            <DashboardLink
+              title="Start this Course"
+              href={`${DASHBOARD_APP_ROUTES.COURSE}/${startCourseSlug}`}
+              className="btn btn--primary btn--light btn--sm outline btn-course-start"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              Start this Course
+            </DashboardLink>
+          </>
         )}
       </div>
       <div className="accordion__content px-0" aria-expanded={!displayContent}>

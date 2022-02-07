@@ -26,7 +26,7 @@ const FooterLinks = ({ data }) => {
           <nav>
             <ul>
               {data?.resources?.list?.map((a) => (
-                <RouteLink key={a.id} {...a} />
+                <RouteLink key={a.id} {...a} target="_blank" />
               ))}
             </ul>
           </nav>

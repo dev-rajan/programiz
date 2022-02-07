@@ -14,15 +14,6 @@ const TabContent = ({ Items }) => {
         </ul>
       </div>
 
-      <div id="pricing-scroll">
-        <h2 className="mb-6x fs-h2main mt-5">{Items?.programiz?.title}</h2>
-        <ul className="accordion accordion--border accordion--border--sm">
-          {Items?.programiz?.list?.map((a) => (
-            <List {...a} key={a.id} step={a.id} />
-          ))}
-        </ul>
-      </div>
-
       <div id="account-scroll">
         <h2 className="mb-6x fs-h2main mt-5">{Items?.account?.title}</h2>
         <ul className="accordion accordion--border accordion--border--sm">

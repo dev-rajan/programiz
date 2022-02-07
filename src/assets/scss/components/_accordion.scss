@@ -3,7 +3,6 @@
   width: 100%;
   border-radius: 8px;
   background-color: #FCFCFF;
-  overflow: hidden;
 
   @include e(row) {
     background-color: #FCFCFF;
@@ -53,7 +52,9 @@
       }
     }
 
-    
+    &:hover {
+      border-radius: 8px;
+    }
   }
 
   @include e(content) {
@@ -69,11 +70,12 @@
   @include m(border) {
     background: none !important;
   }
-  @include e(item){
+
+  @include e(item) {
     background-color: #fff;
+    border-radius: 8px 8px 0 0;
     &:last-child {
       border-bottom: none;
     }
   }
 }
-

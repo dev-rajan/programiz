@@ -18,14 +18,18 @@ const sendClickEventtoSegment = () => {
   });
 };
 
-const CardModal = ({ Items, handleModal, title, path }) => {
+const CardModal = ({ Items, handleModal, title, path, slugData }) => {
   return (
     <div className="card border start-learning-card">
       <img
-        src="/images/illus-start-learning.png"
-        alt="Start Learning"
-        title="Start Learning"
-        className="mb-4 d-none d-lg-block"
+        src={
+          slugData?.data?.logo?.length !== 0 && slugData?.data?.logo !== null
+            ? slugData?.data?.logo
+            : "/images/illus-start-learning.png"
+        }
+        alt={slugData?.data?.title}
+        title={slugData?.data?.title}
+        className="mx-auto d-none d-lg-block"
       />
       <DashboardLink
         title={title}
@@ -35,9 +39,9 @@ const CardModal = ({ Items, handleModal, title, path }) => {
       >
         {title}
       </DashboardLink>
-      <p className="text-center fs-body14 mb-4">
+      {/* <p className="text-center fs-body14 mb-4">
         Start here and start your 7-day free trial of full access.
-      </p>
+      </p> */}
       <hr className="mb-4 d-none d-lg-block" />
       <ul className="d-none d-lg-block">
         {Items?.map((a) => (

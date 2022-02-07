@@ -39,8 +39,9 @@
 
   @include e(desc) {
     padding: 64px 0 48px 0;
+
     h3 {
-      font-weight: 400;
+      font-weight: 500;
       font-size: 20px;
       line-height: 24px;
     }
@@ -100,11 +101,11 @@
   &-inner {
     background-color: $tertiary;
     padding: 96px 0;
-    min-height: 358px;
+    // min-height: 358px;
 
     @include mqmax(md) {
       padding: 30px 0;
-      min-height: 100%;
+      // min-height: 100%;
     }
 
     @include e(desc) {
@@ -119,6 +120,10 @@
 
     &-light {
       background-color: #D1E7FF;
+
+      @include mqmax(lg) {
+        padding: 48px 0;
+      }
     }
   }
 
@@ -128,6 +133,22 @@
 
     @include mqmax(md) {
       flex-wrap: wrap;
+    }
+  }
+
+  &-dash {
+    position: relative;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 263px;
+      height: 16px;
+      background-image: url('../../../../public/images/hero-underline.svg');
+      background-repeat: no-repeat;
+      z-index: 10;
     }
   }
 }
@@ -188,6 +209,9 @@
 
     @include mqmax(md) {
       font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+
     }
 
     img {
@@ -198,7 +222,7 @@
 
       @include mqmax(xl) {
         position: absolute;
-        right: -45px;
+        right: -80px;
         bottom: -152px;
       }
     }
@@ -207,7 +231,7 @@
   .quiz-question {
     font-size: 1.25rem;
     color: $color-text;
-    font-weight: 600;
+    font-weight: 400;
   }
 
   .quiz {
@@ -224,6 +248,10 @@
     @include mqmax(lg) {
       margin-top: 32px;
     }
+  }
+
+  pre.nonexecutable-code {
+    margin-bottom: 0;
   }
 }
 
@@ -255,10 +283,15 @@
 
 .start-coding-section {
   background-color: #ebe8fd;
+  // margin-top: 225px;
 
   .row {
     position: relative;
     padding: 110px 0;
+
+    @include mqmax(sm) {
+      padding: 72px 0;
+    }
   }
 
   .start-coding-illus {
@@ -328,7 +361,7 @@
     color: getColor("white.text");
     font-size: 2rem;
 
-    @include mqmax(md) {
+    @include mqmax(lg) {
       font-size: 1.4rem;
     }
   }
@@ -357,17 +390,18 @@
     height: 100%;
     transform: scale(0.9);
 
-@include mq(lg){
-  transform: scale(1.15);
-  top: 18px;
+    @include mq(lg) {
+      transform: scale(1.15);
+      top: 18px;
 
-}
+    }
+
     @include mqmax(lg) {
       left: 0px;
       height: 269px;
     }
 
-    @include mqmax(md) {
+    @include mqmax(lg) {
       left: -15px;
       height: 242px;
       top: -24px;
@@ -375,12 +409,12 @@
   }
 
   @include mqmax(md) {
-    padding:56px 0 17px 0;
+    padding: 56px 0 17px 0;
 
     h3 {
       font-size: 20px;
       line-height: 30px;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     p {
@@ -394,7 +428,7 @@
 //why programiz
 
 .why-programiz {
-  padding: 96px 0;
+  padding: 96px 0 225px 0;
   overflow: hidden;
 
   @include e(title) {
@@ -476,10 +510,11 @@
   box-shadow: 4px 8px 12px rgba(0, 51, 63, 0.1);
 
   &--sm {
-    min-height: 30.5rem;
+    max-height: 28rem;
 
     @include mqmax(md) {
-      min-height: 10rem;
+      min-height: 28rem;
+      max-height: none;
     }
   }
 
@@ -512,11 +547,14 @@
   @include m(sm) {
     .testimony__text {
       font-size: 18px;
-      font-weight: 400 !important;
+      font-weight: 600;
     }
 
     .testimony__name {
-      font-size: 16px;
+      font-size: 18px;
+      line-height: 30px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.87);
     }
   }
 
@@ -536,7 +574,7 @@
       width: 145px;
       height: 168px;
 
-     
+
 
       @include mq(lg) {
         width: 170px;
@@ -562,6 +600,7 @@
   @include m(large) {
     height: 570px;
   }
+
   // @include e(img){
   //   @include m(large) {
   //     img{
@@ -575,11 +614,32 @@
 // course list
 
 .course-detail {
-  padding: 72px 0;
+  padding-bottom: 72px;
+
+  .hero-inner {
+    margin-bottom: 72px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left:-100vw;
+      width: 1000vw;
+      height: 100%;
+      background-color: #D1E7FF;
+      z-index: -1;
+      // transform: translateX(-14vw);
+      // @include mqmax(md){
+      //   width: 150vw;
+      // }
+    }
+  }
 
   .accordion__title {
     padding: 24px 32px;
-    h5{
+
+    h5 {
       font-size: 20px;
       line-height: 30px;
     }
@@ -637,7 +697,7 @@
 .course-text {
   @include mqmax(md) {
     font-size: 16px;
-    line-height:30px;
+    line-height: 30px;
   }
 }
 
@@ -663,7 +723,7 @@
   position: -webkit-sticky;
   position: sticky;
   top: 2em;
-  margin-top: -25em;
+  margin-top: 56px;
   height: auto;
   padding: 8px 24px 0 24px;
   border-radius: 8px;
@@ -679,7 +739,7 @@
     z-index: 11;
     top: calc(100% - 160px);
     border-radius: 0;
-  padding: 42px 24px 16px;
+    padding: 42px 24px 16px;
 
     background-color: $white;
     border: none !important;
@@ -688,6 +748,7 @@
 }
 
 .course-column {
+
   @include mqmax(md) {
     margin-top: 0; //520px
   }
@@ -720,7 +781,7 @@
 .pricing-cards {
   margin-top: -124px;
 
-  @include mqmax(md){
+  @include mqmax(md) {
     margin-top: -114px;
   }
 
@@ -728,7 +789,8 @@
 
 .hero-pricing {
   padding: 96px 0 0;
-  @include mqmax(md){
+
+  @include mqmax(md) {
     padding: 38px 0 138px 0;
   }
 }
@@ -746,12 +808,13 @@
 
 // about page
 
-.hero-about {
+.hero-about,
+.contact__header {
   background-color: $color-text;
   position: relative;
   overflow: hidden;
-  height: 300px;
-  min-height: auto;
+  max-height: 300px;
+  min-height: 258px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -781,6 +844,10 @@
 .quiz__wrapper {
   padding: getSpacing("9x") getSpacing("8x");
 
+  @include mqmax(md) {
+    padding: 24px;
+  }
+
   pre {
     font-size: getFontSize("body14");
   }
@@ -808,7 +875,7 @@
   overflow: hidden;
 
   @include mq(xl) {
-    max-height: 480px;
+    max-height: 510px;
   }
 
   @include mqmax(lg) {
@@ -821,6 +888,10 @@
 
   .answer-success {
     padding: 62px;
+
+    .image {
+      height: 153px;
+    }
 
     .btn {
       min-width: 198px;
@@ -835,7 +906,7 @@
 @include mqmax(lg) {
 
   .footer-padding {
-    padding-bottom: 120px !important;
+    padding-bottom: 180px !important;
   }
 }
 
@@ -849,7 +920,6 @@
     h2 {
       font-size: 32px;
       line-height: 40px;
-      margin-bottom: 24px;
     }
   }
 }
@@ -885,7 +955,8 @@
   .hero-inner {
     // padding: 96px 0 76px 0;
     padding: 96px 0;
-    @include mqmax(md){
+
+    @include mqmax(md) {
       padding: 48px 0;
     }
   }
@@ -893,13 +964,15 @@
 
 .package__page {
   padding: 56px 0 56px 61px;
-  @include m(sm){
-  padding: 56px 0 56px 45px;
-  .card-course {
-    width: 255px!important;
-    height: 353px!important;
 
-  }
+  @include m(sm) {
+    padding: 56px 0 56px 45px;
+
+    .card-course {
+      width: 255px !important;
+      height: 353px !important;
+
+    }
   }
 }
 
@@ -944,23 +1017,44 @@
   .sticky-top {
     top: 25px;
   }
-  .accordion__content{
-    padding: 0;
-    p{
-      margin:0;
+
+  .accordion__content {
+    p {
+      padding: 0 24px 24px 46px;
+      margin: 0;
     }
+
   }
-  .accordion__title--open~.accordion__content{
-    padding: 0 24px 24px 46px;
+
+  .accordion__title--open~.accordion__content {
+    p {
+      padding: 0 24px 24px 46px;
+
+    }
 
   }
 
 }
 
-.completed__box{
-    padding: 94px 24px;
-    @include mq(lg){
+.completed__box {
+  padding: 94px 24px;
+
+  @include mq(lg) {
     padding: 72px 0 40px 0;
 
+  }
+}
+
+.why-this-path.course-path {
+  .rock-paper {
+    transform: scale(1.08);
+    top: 13px;
+
+    @include mqmax(lg) {
+      left: -28px;
+      top: -16px;
+      transform: scale(.95);
+
     }
+  }
 }

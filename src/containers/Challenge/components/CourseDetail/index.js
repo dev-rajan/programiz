@@ -5,6 +5,7 @@ import ShareModal from "components/Modal/ShareModal";
 import CardModal from "containers/Course/components/CourseDetail/CardModal";
 import FancyCard from "containers/Course/components/CourseFeature/FancyCard";
 import { DASHBOARD_APP_ROUTES } from "constants/app-routes";
+import CourseHeros from "containers/Course/components/CourseHero";
 
 const Items = [
   {
@@ -35,7 +36,7 @@ const Items = [
   },
 ];
 
-const CourseDetails = ({ custom, slug }) => {
+const CourseDetails = ({ custom, slug, slugData, shareModalClassName }) => {
   const [show, setShow] = useState(false);
 
   const handleModal = () => {
@@ -45,15 +46,21 @@ const CourseDetails = ({ custom, slug }) => {
   return (
     <section className="course-detail">
       <div className="container">
-        <div className="row">
+        <div className={`row`}>
           <ShareModal show={show} setShow={setShow} />
 
           <div className="col-lg-8 course-column">
+            <CourseHeros
+              customData={custom}
+              details={slugData}
+              category="COURSE CHALLENGE"
+            />
             <FancyCard custom={custom} />
           </div>
 
-          <div className="col-lg-4 sticky-none">
+          <div className="col-lg-4">
             <CardModal
+              slugData={slugData}
               path={`${DASHBOARD_APP_ROUTES.COURSE}/${slug}`}
               Items={Items}
               handleModal={handleModal}

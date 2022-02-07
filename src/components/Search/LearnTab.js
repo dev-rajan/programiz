@@ -34,7 +34,7 @@ const LearnTab = ({ filteredLearning, filteredCourses, handleClick }) => {
       ) : (
         <div className="search__list">
           {filteredLearning?.map((a) => (
-            <List linkTo="learning" {...a} key={a.id} />
+            <List linkTo="learn" {...a} key={a.id} />
           ))}
         </div>
       )}

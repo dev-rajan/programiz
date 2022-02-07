@@ -6,21 +6,19 @@ import Code from "./components/Code";
 import CourseLearnings from "containers/Course/components/CourseLearning";
 import CourseHeros from "containers/Course/components/CourseHero";
 
-const Challenge = ({
-  recommended,
-  custom,
-  challengeData,
-  slug,
-  customText,
-}) => {
+const Challenge = ({ recommended, custom, challengeData, slug, slugData }) => {
   return (
     <>
       {/* Hero section */}
-      <div className="learning__page">
-        <CourseHeros details={custom} category="COURSE CHALLENGE" />
+      <div key={slug} className="learning__page">
+        {/* <CourseHeros
+          customData={custom}
+          details={slugData}
+          category="COURSE CHALLENGE"
+        /> */}
 
         {/* Detail  */}
-        <CourseDetails slug={slug} custom={customText} />
+        <CourseDetails slug={slug} custom={custom} slugData={slugData} />
 
         <Code slug={slug} challengeData={challengeData} />
 

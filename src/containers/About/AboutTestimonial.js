@@ -18,7 +18,7 @@ const AboutTestimonial = ({ Item }) => {
               <p className="testimony__text mb-4 color-white-main py-4 px-8x ">
                 {Item?.message?.message}
               </p>
-              <span className="testimony__name mt-auto color-white-main px-4 pb-4">
+              <span className="testimony__name mt-auto px-4 pb32">
                 {Item?.message?.position}
               </span>
             </div>

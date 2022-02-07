@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import NextNprogress from "nextjs-progressbar";
 
+import ContextProvider from "contextApi";
+
 import "../assets/scss/style.scss";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import BackDrop from "components/Header/CourseDropdown/BackDrop";
 
 Router.events.on("beforeHistoryChange", (url) => {
   window.analytics.page(url);
@@ -34,7 +37,8 @@ const MyApp = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <>
+    <ContextProvider>
+      <BackDrop />
       <Header />
       <main>
         <NextNprogress
@@ -45,7 +49,7 @@ const MyApp = ({ Component, pageProps }) => {
         <Component {...pageProps} />
       </main>
       <Footer footerClass={pageProps.footerClass} />
-    </>
+    </ContextProvider>
   );
 };
 

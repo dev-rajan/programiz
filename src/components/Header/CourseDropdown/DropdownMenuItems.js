@@ -1,16 +1,15 @@
-import { useRouter } from "next/router";
 import React from "react";
+import { useRouter } from "next/router";
 
 const DropdownMenuItems = ({
   logo,
-  level,
   chaptersCount,
   title,
   link,
   handleDropdown,
+  courseCount,
 }) => {
   const router = useRouter();
-
   const handleClick = () => {
     router.push(link);
     handleDropdown();
@@ -25,7 +24,7 @@ const DropdownMenuItems = ({
       className="dropdown-menu__item"
     >
       <img
-        src={logo?.length !== 0 ? logo : "/images/noimage.png"}
+        src={logo?.length !== 0 && logo !== null ? logo : "/images/noimage.png"}
         alt="Course"
         title="Course"
         className="mr-4x"
@@ -33,8 +32,8 @@ const DropdownMenuItems = ({
       <div>
         <h5>{title}</h5>
         <span className="fs-tiny">
-          {chaptersCount} chapters &nbsp;•&nbsp; Level:
-          {level?.title}
+          {chaptersCount !== undefined ? `${chaptersCount} chapters` : ""}
+          {courseCount !== undefined ? `${courseCount} courses` : ""}
         </span>
       </div>
     </div>

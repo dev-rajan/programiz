@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 const LearningCards = ({ title, logo, chaptersCount, level, slug }) => {
-  const Learn_URL = "/learning";
+  const Learn_URL = "/learn";
 
   return (
     <div className={` mx-3`}>

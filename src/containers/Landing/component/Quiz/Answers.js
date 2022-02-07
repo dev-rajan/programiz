@@ -1,23 +1,29 @@
 import React from "react";
 
+import getSummaryText from "utility/TextFormatter";
+
 const Answers = ({
   sn,
-  id,
   question,
   isSelected,
   setIsSelected,
   setIsCorrect,
   isCorrect,
+  isRight,
   setQuestion,
+  setCheckCorrect,
 }) => {
   const handleClick = () => {
-    setIsSelected(id);
-    setQuestion(question);
+    setIsSelected(sn);
+    setCheckCorrect(isRight);
+    setQuestion(option);
     if (!isCorrect) {
       setIsCorrect(null);
-      setIsSelected(id);
+      setIsSelected(sn);
     }
   };
+
+  const option = getSummaryText(JSON.parse(question), "text");
 
   return (
     <div className="col-md-6">
@@ -26,7 +32,7 @@ const Answers = ({
         onKeyDown={() => {}}
         onClick={handleClick}
         className={`label quiz-answer__item ${
-          isSelected === id
+          isSelected === sn
             ? `active ${
                 isCorrect === null
                   ? "quiz-answer__item--selected"
@@ -38,7 +44,7 @@ const Answers = ({
         <input type="radio" name="answer" />
         <div>
           <span className="quiz-answer__sn mr-2x">{sn}.</span>
-          {question}
+          {option}
         </div>
       </label>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import AceEditor from "react-ace-cdn";
 
+import AceEditor from "components/CodeEditor";
 import { LESSON_TYPES, CODE_TYPES } from "constants/consts";
 import { isObjectEmpty } from "utility/helper";
 
@@ -13,6 +13,8 @@ const ContentRender = ({
   setTryLessonCode,
 }) => {
   const highLightingLines = [];
+
+  if (!content) return null;
 
   const contentJson = JSON.parse(content);
   const nodes = [...contentJson.document.nodes];
@@ -175,7 +177,7 @@ const ContentRender = ({
             maxLines={minLines}
             fontSize={14}
             value={editorCode}
-            theme="solarized_dark"
+            theme="monokai"
             style={{ background: "#2d2f34" }}
             name={`TERMINAL`}
             wrapEnabled={true}
@@ -206,14 +208,29 @@ const ContentRender = ({
     }
 
     if (node?.type === "pre") {
+      let prefixText = "";
+
+      if (contentType === LESSON_TYPES.CHALLENGE) {
+        if (node?.data?.class.includes("input")) {
+          prefixText = "Input";
+        } else if (node?.data?.class.includes("output")) {
+          prefixText = "Output";
+        }
+      }
+
       return (
-        <pre
-          className={`${
-            contentType == LESSON_TYPES.CHALLENGE ? "challenge-snippet" : ""
-          } nonexecutable-code`}
-        >
-          <code>{renderSlateNodes(node.nodes)}</code>
-        </pre>
+        <>
+          {prefixText.length ? (
+            <p className="mt-6x mb-2x text-white">{prefixText}</p>
+          ) : null}
+          <pre
+            className={`${
+              contentType == LESSON_TYPES.CHALLENGE ? "challenge-snippet" : ""
+            } nonexecutable-code`}
+          >
+            <code>{renderSlateNodes(node.nodes)}</code>
+          </pre>
+        </>
       );
     }
 

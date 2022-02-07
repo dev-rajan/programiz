@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-const Cards = ({ logo, level, chaptersCount, title, link }) => {
+const Cards = ({ logo, category, title, link }) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -20,7 +20,11 @@ const Cards = ({ logo, level, chaptersCount, title, link }) => {
         <div className="card__body order-md-1 order-0">
           <div className="course__image text-center ">
             <img
-              src={logo?.length !== 0 ? logo : "/images/noimage.png"}
+              src={
+                logo?.length !== 0 && logo !== null
+                  ? logo
+                  : "/images/noimage.png"
+              }
               alt="Course"
               title="Course"
             />
@@ -29,8 +33,7 @@ const Cards = ({ logo, level, chaptersCount, title, link }) => {
         <div className="order-md-0 order-1 p-3 d-flex flex-column flex-grow-1">
           <h3 className="card__title">{title}</h3>
           <p className="text-tiny mb-0x  order-md-3 order-3 mt-auto text-dark">
-            {chaptersCount} chapters &nbsp;•&nbsp; Level:
-            {level?.title}
+            {category}
           </p>
         </div>
       </div>

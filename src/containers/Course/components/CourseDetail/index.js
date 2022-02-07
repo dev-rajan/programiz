@@ -35,7 +35,7 @@ const Items = [
   },
 ];
 
-const CourseDetails = ({ toc, custom, slug }) => {
+const CourseDetails = ({ toc, custom, slug, slugData, details }) => {
   const [show, setShow] = useState(false);
 
   const handleModal = () => {
@@ -45,13 +45,19 @@ const CourseDetails = ({ toc, custom, slug }) => {
   return (
     <section className="course-detail">
       <div className="container">
-        <div className="row">
+        <div className={`row share-modal-container`}>
           <ShareModal show={show} setShow={setShow} />
 
-          <CourseFeatures slug={slug} toc={toc} custom={custom} />
+          <CourseFeatures
+            slug={slug}
+            toc={toc}
+            custom={custom}
+            details={details}
+          />
 
           <div className="col-lg-4">
             <CardModal
+              slugData={slugData}
               Items={Items}
               path={`${DASHBOARD_APP_ROUTES.COURSE}/${slug}`}
               handleModal={handleModal}

@@ -97,60 +97,83 @@
       background-color: transparentize($alert, 0.8);
     }
   }
- &__title{
-   font-size: 16px;
-   font-weight: 400;
-   line-height: 24px;
- }
-@include e(text){
-  font-size: 14px;
-  line-height: 20px;
-}
+
+  &__title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  @include e(text) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 #code-editor {
   z-index: 2;
-  width: 102% !important;
-  height: 345px!important;
-  @include mqmax(sm){
-    height: 34em!important;
+  width: 100% !important;
+  // height: 345px !important;
+  height: 100% !important;
+
+  ::-webkit-scrollbar{
+    width: 12px;
+ 
   }
+  ::-webkit-scrollbar-track {
+    background-color: #202023;
+
+  }
+  
+  
+
+  // @include mqmax(sm) {
+  //   height: 34em !important;
+  // }
 }
 
 .editor__block {
   position: relative;
   background-color: #1F2023;
   height: 345px;
-  @include mqmax(md){
-  min-height: 424px;
+  padding-bottom: 24px;
+
+  @include mqmax(md) {
+    min-height: 424px;
+    padding-bottom: 100px;
 
   }
 }
 
 .editor__header {
-  background-color: #1F2023;
+  background-color: #1f2023;
   padding-top: getSpacing('6x');
-  width: 102%;
 }
 
 .editor__footer {
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  // width: 100%; 
   z-index: 10;
+  @include mqmax(md){
+    width: 100%;
+  }
 
-  .form-control:disabled, .form-control[readonly]{
+  .form-control:disabled,
+  .form-control[readonly] {
     background-color: transparent;
     color: $white;
   }
+
   .btn {
     min-width: 148px;
-    @include mqmax(lg){
+
+    @include mqmax(lg) {
       min-width: 100%;
     }
   }
-  
+
 }
 
 .quiz-answer__item {
@@ -162,16 +185,39 @@
   background-color: #1F2023 !important;
 }
 
+.ace-solarized-dark {
+  background-color: #1f2023;
+}
+
+.ace-solarized-dark .ace_gutter {
+  background-color: #1f2023;
+}
+
 .ace_gutter {
   color: $white !important;
+}
+
+.ace-solarized-dark .ace_gutter-active-line {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .editor__output {
   background-color: #2D2F34;
   padding: 32px 24px;
 }
-.w-sm-100{
-  @include mqmax(sm){
+
+.w-sm-100 {
+  @include mqmax(sm) {
     width: 100%;
   }
+}
+.run__code{
+  margin-bottom: 41px;
+  margin-right: 32px;
+  @include mqmax(md){
+    margin: 0 24px 32px 24px;
+  }
+}
+.btn__large--width{
+  min-width: 227px!important;
 }

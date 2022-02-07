@@ -8,17 +8,9 @@ const API_URI = {
   GET: "/Sync",
 };
 
-const API_SECTION = {
-  GET: "/SectionContent",
-};
-
 class CourseApi {
   static getAll() {
     return AuthenticatedApi.get(API_URL.GET);
-  }
-
-  static getSection(id) {
-    return AuthenticatedApi.get(`${API_SECTION.GET}/${id}/details`);
   }
 
   static getCourseSlug(slug) {

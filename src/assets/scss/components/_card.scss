@@ -151,8 +151,9 @@
     .card__body {
       display: flex;
       align-items: center;
-      @include mqmax(md){
-       min-height: 120px;
+
+      @include mqmax(md) {
+        min-height: 120px;
       }
     }
 
@@ -251,7 +252,7 @@
 
   &__learning {
     width: 15.94rem;
-   height: 355px;
+    height: 355px;
   }
 }
 
@@ -348,13 +349,26 @@
 }
 
 .card-path {
-  // min-height: 162px;s
+  min-height: 162px;
   width: 255px;
 
-  @include mqmax(xl){
-    margin: 0 .4rem;
-  }
+ @media  (min-width: 400px) and (max-width:576px) {
+  width: 300px;
+ }
 
+}
+
+.why-programiz {
+  .d-md-block {
+    .card-path {
+      margin-bottom: 24px;
+
+      @include mqmax(xl) {
+        margin-left: 12px;
+        margin-right: 12px;
+      }
+    }
+  }
 }
 
 .card__path--mobile {
@@ -371,26 +385,110 @@
     }
   }
 }
-.learning{
-  &__path{
-    width: 255px!important;
-    height: 150px;
+
+@include mqmax(xl) {
+
+  .learning-slide,
+  .why-slide {
+    .slick-list {
+      padding: 0 9px !important;
+
+      .slick-track {
+        width: 1200px !important;
+
+        .slick-slide {
+          width: 255px !important;
+          margin: 0 15px;
+        }
+      }
+    }
   }
-  &__container{
-    @include mq(lg){
+
+  .why-slide {
+    .card-path {
+      margin-bottom: 2.074em;
+    }
+  }
+}
+   
+@media  (min-width: 400px) and (max-width:576px) {
+  
+  .learning-slide,
+  .why-slide {
+    .slick-list {
+      .slick-track {
+        .slick-slide {
+          width: 300px !important;
+        }
+      }
+    }
+  }
+ }
+
+.learning {
+  &__path {
+    // width: 255px !important;
+    height: 150px;
+    cursor: pointer;
+  }
+
+  &__container {
+    @include mq(lg) {
       width: 100%;
       max-width: 1140px;
       margin: 0 auto;
       padding-right: 15px;
-    padding-left: 15px;
+      padding-left: 15px;
     }
   }
 }
-.pricing__card{
+
+.pricing__card {
   box-shadow: 4px 8px 12px rgba(58, 45, 0, 0.12);
 }
 
 
-.card__block{
+.card__block {
   border-radius: 12px;
+}
+
+.card__box {
+  padding: 32px 49px 27px 32px;
+
+  .card__list {
+    padding: 20px;
+
+    &:nth-child(1) {
+      border-right: 1px solid #D3DCE6;
+      padding-right: 32px;
+    }
+
+    &:nth-child(2) {
+      padding-left: 44px;
+    }
+  }
+
+  @include mqmax(md) {
+    padding: 0;
+
+    .row {
+      margin: 0;
+    }
+
+    .card__list {
+      padding: 44px 0 30px 0;
+      margin: 0 24px;
+
+      &:nth-child(1) {
+        border: none;
+        border-bottom: 1px solid #D3DCE6;
+        padding-right: 0;
+      }
+
+      &:nth-child(2) {
+        padding-left: 0;
+      }
+    }
+
+  }
 }

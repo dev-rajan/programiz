@@ -1,7 +1,7 @@
 {
   "data": {
     "title": "Python Beyond the Basics",
-    "content": "The basic concept of python helps you dive into the world of programming from the very basics. Once you are past that step, it's time to explore the advanced concepts. Python Beyond the Basics will help you write code in a more pythonic way using different tips and tricks. You will also learn the concept of object-oriented using Python.\n\nBecome a Python Proficient by mastering the advanced concepts with the help of challenges and projects.",
+    "summary": "The basic concept of python helps you dive into the world of programming from the very basics. Once you are past that step, it's time to explore the advanced concepts. Python Beyond the Basics will help you write code in a more pythonic way using different tips and tricks. You will also learn the concept of object-oriented using Python.\n\nBecome a Python Proficient by mastering the advanced concepts with the help of challenges and projects.",
     "card1": {
       "id": 1,
       "title": "Combine learning with practice",

@@ -48,7 +48,7 @@ const Search = ({ result }) => {
       });
 
     setFilteredLearning(learningData);
-    setTotal(courseData.length + learningData.length);
+    setTotal(courseData?.length + learningData?.length);
   };
 
   useEffect(() => {

@@ -196,10 +196,21 @@
 .btn__search--primary {
   border-radius: 0 0.25em 0.25em 0;
   min-height: 72px;
+  width:186px;
+  padding: 21px 33px;
 
   @include mqmax(lg) {
     border-radius: 0;
+    border-bottom-left-radius: 0.25em;
+    border-bottom-right-radius: 0.25em;
     width: 100%;
+  }
+  @include mqmax(md) {
+    min-height: 62px;
+    height: 62px;
+    line-height: 1;
+    padding: 16px 33px;
+
   }
 }
 
@@ -240,6 +251,9 @@
 
 .code__btn {
   padding: 9px 36px;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 600;
 }
 
 .code__button {
@@ -270,4 +284,13 @@
 .btn-xs {
   font-size: 14px;
   padding: 10px 16px;
+}
+
+.contact__content h2 {
+  margin-bottom: 64px;
+}
+
+.newsletter-btn {
+  min-height: 61px;
+  min-width:77.61px !important;
 }

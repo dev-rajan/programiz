@@ -2,9 +2,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import SEO from "components/SEO";
-import LearningApi from "services/api/LearningApi";
+import LearningApi from "services/Marketing/LearningApi";
 import LearnComponent from "containers/Learn";
 import { CUSTOM_LEARNING_PATH_DATA } from "constants/consts";
+import PageNotFound from "pages/404";
+import CourseApi from "services/Marketing/CourseApi";
 
 const LearningPage = (props) => {
   const router = useRouter();
@@ -20,32 +22,27 @@ const LearningPage = (props) => {
     fetchData();
   }, [props.slug]);
 
+  if (!props?.slugData?.data || props?.slugData?.data?.length < 1) {
+    return <PageNotFound />;
+  }
+
   return (
     <>
       <SEO
-        path={`/learning/${props.slug}`}
+        path={`/learn/${props.slug}`}
         title={`${
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.PYTHON_JOB_READY ||
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.C_JOB_READY
-            ? customData?.data?.title
+          customData
+            ? props?.slugData?.data?.title
             : props?.slugData?.data?.title
-        } | Learning Path`}
+        }`}
       />
+
       <LearnComponent
         {...props}
-        custom={
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.PYTHON_JOB_READY ||
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.C_JOB_READY
-            ? customData
-            : props?.slugData
-        }
-        details={
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.PYTHON_JOB_READY ||
-          router.query.slug[0] == CUSTOM_LEARNING_PATH_DATA.C_JOB_READY
-            ? customData
-            : ""
-        }
-        slugData={props.slugData}
+        custom={customData}
+        details={props.slugData}
+        slugData={props?.slugData}
+        toc={props.lessonData}
       />
     </>
   );
@@ -57,6 +54,16 @@ export const getServerSideProps = async (context) => {
   try {
     const slugData = await LearningApi.getLearnSlug(slug);
     const recommended = await LearningApi.getRecommended();
+    const lessonCourses = slugData?.data?.data?.levels
+      ?.map((a) => a.courses)
+      .flat();
+    const toc = await Promise.all(
+      lessonCourses.map(async ({ id, ...rest }) => {
+        const { data } = await CourseApi.getCourseToc(id);
+
+        return { ...data.data, ...rest };
+      })
+    );
 
     return {
       props: {
@@ -64,6 +71,7 @@ export const getServerSideProps = async (context) => {
         slugData: slugData.data,
         recommended: recommended.data,
         footerClass: "footer-padding",
+        lessonData: toc,
       },
     };
   } catch (error) {
@@ -73,6 +81,7 @@ export const getServerSideProps = async (context) => {
         slugData: [],
         recommended: [],
         footerClass: "footer-padding",
+        lessonData: [],
       },
     };
   }

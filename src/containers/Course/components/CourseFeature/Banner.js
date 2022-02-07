@@ -4,28 +4,26 @@ const Banner = ({ custom }) => {
   return (
     <div className="course-section">
       <h2 className="mb-6x fs-h2main">What will I make in this course?</h2>
-      <div className="why-this-path mt-0x">
+      <div className="why-this-path mt-0x course-path">
         <img
           src="/images/rock-paper.svg"
           alt="Rock Paper"
           title="Rock Paper"
           className="rock-paper"
         />
-        <div className="row">
-          <div className="col-7 offset-4">
-            <h3 className="mb-2 mb-md-4">
-              {custom !== ""
-                ? custom?.data?.banner?.rock_paper?.title
-                : "Rock, Paper & Scissors"}
-            </h3>
-            <p className="mb-0x">
-              &quot;
-              {custom !== ""
-                ? custom?.data?.banner?.rock_paper?.desc
-                : `I have been teaching English for 25 years. I wanted to learn how to code but had no idea before I discovered Programiz. Recommend 100%.`}
-              &quot;
-            </p>
-          </div>
+        <div className="path-block">
+          <h3 className="mb-2 mb-md-4 path-title">
+            {custom !== ""
+              ? custom?.data?.banner?.rock_paper?.title
+              : "Rock, Paper & Scissors"}
+          </h3>
+          <p className="mb-0x path-text">
+            &quot;
+            {custom !== ""
+              ? custom?.data?.banner?.rock_paper?.desc
+              : `I have been teaching English for 25 years. I wanted to learn how to code but had no idea before I discovered Programiz. Recommend 100%.`}
+            &quot;
+          </p>
         </div>
       </div>
       <div className="row ">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import SEO from "components/SEO";
 import ChallengeComponent from "containers/Challenge";
 import { data } from "containers/Challenge/components/Code/Data";
-import CourseApi from "services/api/CourseApi";
+import CourseApi from "services/Marketing/CourseApi";
 
 const ChallengePage = (props) => {
   const [customData, setCustomData] = useState("");

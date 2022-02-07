@@ -6,17 +6,21 @@ import { DASHBOARD_APP_ROUTES } from "constants/app-routes";
 
 import SectionContent from "./SectionContent";
 
-const CourseSection = ({ section, slug }) => {
-  const isFirstChapter = section.id === 1;
+const CourseSection = ({ section, slug, courseNumber }) => {
+  const isFirstChapter = courseNumber + 1 === 1;
   const [displayContent, setDisplayContent] = React.useState(isFirstChapter);
 
-  const sectionContents = section.courses.map((sectionContent) => (
+  const firstElementSlug = section?.slug;
+
+  const sectionContents = section?.sections?.map((sectionContent) => (
     <SectionContent
       slug={slug}
       key={sectionContent.id}
       sectionContent={sectionContent}
     />
   ));
+
+  const displayPath = `${DASHBOARD_APP_ROUTES.COURSE}/${firstElementSlug}/${section?.sections?.[0]?.sectionContent?.[0]?.slug}`;
 
   return (
     <li className="accordion__item">
@@ -31,7 +35,7 @@ const CourseSection = ({ section, slug }) => {
       >
         <h5 className="d-flex align-items-center">
           <span className="course-number color-secondary mr-5x">
-            COURSE {section.id}
+            COURSE {courseNumber + 1}
           </span>
           <span className="text-ellipsis-mobile course-text">
             {section.title}
@@ -41,8 +45,11 @@ const CourseSection = ({ section, slug }) => {
         {isFirstChapter && (
           <DashboardLink
             title="Start this Path"
-            href={`${DASHBOARD_APP_ROUTES.LEARNING_PATH}/${slug}`}
+            href={displayPath}
             className="btn btn--primary btn--light btn--sm outline btn-course-start"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
           >
             Start this Path
           </DashboardLink>

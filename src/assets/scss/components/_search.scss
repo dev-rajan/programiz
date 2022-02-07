@@ -88,7 +88,7 @@
   background-color: $white;
   border: 0.0625em solid #D3DCE6;
   border-radius: 0.25em;
-  box-shadow: 0.875em 1.5em 3.31em rgba(0, 28, 71, 0.12);
+  box-shadow: 14.4727px 24.1212px 53.0666px rgba(0, 28, 71, 0.12);
 
   svg {
     transition: all .3s ease-in-out;
@@ -117,11 +117,11 @@
   min-width: 100%;
 
   @include mq(lg) {
-    min-width: 350px
+    min-width: 310px
   }
 
   @include mq(xl) {
-    min-width: 445px;
+    min-width: 425px;
   }
 }
 
@@ -200,7 +200,7 @@
   position: absolute;
   z-index: -50;
   padding: 32px;
-  width: 990px;
+  width: 984px;
   left: 50%;
   transform: translateX(-50%);
   background-color: $white;
@@ -210,10 +210,10 @@
   border-radius: 12px;
   transition: all .2s ease-in-out;
   opacity: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  .col-lg-6{
-    margin-top: 24px;
-  }
   @include desktop {
     width: 100%;
   }
@@ -245,13 +245,15 @@
   .major__item {
     padding: 32px;
     border-radius: 0.25em;
-    max-width: 445px;
+    width: 445px;
     height: 106px;
 
-    @include mqmax(md) {
+    @include mqmax(lg) {
       padding: 24px;
       height: 84px;
       // max-width: 283px;
+      width: 100%;
+      
     }
   }
 
@@ -260,7 +262,22 @@
     opacity: 1;
     z-index: 50;
   }
-  
+  .mw-100{
+    width: 100%;
+    
+    &:nth-child(2), &:nth-child(3),&:nth-child(4){
+      margin-top: 16px;
+    }
+    @include mq(lg){
+      width: auto;
+      &:nth-child(2){
+        margin-top: 0;
+      }
+      &:nth-child(3),&:nth-child(4){
+        margin-top: 24px;
+      }
+    }
+  }
 }
 
 .major__item--red {

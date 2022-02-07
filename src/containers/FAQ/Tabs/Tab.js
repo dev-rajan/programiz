@@ -9,15 +9,12 @@ const Tab = ({ title, id, isActive, setIsActive }) => {
       handleScroll("general-scroll");
     }
     if (id === 2) {
-      handleScroll("pricing-scroll");
-    }
-    if (id === 3) {
       handleScroll("account-scroll");
     }
-    if (id === 4) {
+    if (id === 3) {
       handleScroll("certificate-scroll");
     }
-    if (id === 5) {
+    if (id === 4) {
       handleScroll("content-scroll");
     }
   };

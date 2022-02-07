@@ -28,9 +28,9 @@ export const LearnData = [
 export const Data = {
   step: 1,
   label: "Quiz",
-  title: "What is the output of the following code?",
-  num1: 4,
-  num2: 3,
+  title: "What will be the output of the following code?",
+  num1: 50,
+  num2: 30,
   questions: [
     {
       id: 1,
@@ -67,7 +67,7 @@ print(result)`;
 
 export const CodeBlock = {
   label: "Practice with Challenges",
-  title: "Challenge #1: Find the sum of two numbers",
+  title: "Challenge #1: ",
   code: DEFAULT_CODE_VALUE,
   expected_value: 15,
   step: 2,

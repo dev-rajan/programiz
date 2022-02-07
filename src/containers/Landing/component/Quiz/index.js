@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-distributed-forms";
 
 import { Data } from "../../Data";
@@ -8,12 +8,14 @@ import Success from "./Success";
 import Code from "./Code";
 import Completed from "./Completed";
 
-import Correct from "../../../../../public/images/correct-illustration.svg";
+import Correct from "../../../../../public//images/success-quiz.png";
 
-const Quizs = () => {
+const Quizs = ({ quizData }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [isCorrect, setIsCorrect] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [isMounted, setIsMounted] = useState(false);
 
   const handleSubmit = ({ name }) => {
     if (isCorrect === true) {
@@ -29,6 +31,12 @@ const Quizs = () => {
     setIsSelected(false);
     setIsCorrect(null);
   };
+
+  useEffect(() => {
+    if (currentPage === 2) {
+      setIsMounted(true);
+    }
+  }, [currentPage]);
 
   return (
     <section className="interactive-quiz">
@@ -47,7 +55,8 @@ const Quizs = () => {
               and intuitive way.
             </div>
             <p className="try-out pr-0 pr-md-5">
-              Try out a snippet of our lesson flow NOW!
+              Try out a snippet of our lesson
+              <br className="d-md-none" /> flow NOW!
               <img
                 src="images/try-out-arrow.svg"
                 className={
@@ -66,10 +75,11 @@ const Quizs = () => {
               />
             </p>
           </div>
-          <div className="col-xl-7 quiz d-flex flex-column flex-grow-1 justify-content-center">
+          <div className="col-xl-7 quiz ">
             <Form onSubmit={handleSubmit}>
               {currentPage === 1 && (
                 <Question
+                  quizData={quizData[1]}
                   Data={Data}
                   Answers={Answers}
                   isSelected={isSelected}
@@ -82,18 +92,19 @@ const Quizs = () => {
               )}
               {currentPage === 2 && (
                 <Success
+                  isMounted={isMounted}
                   img={Correct}
                   title="Correct Answer"
                   message="You just read a Python code syntax and gave the correct answer."
                   btnText="Go to Step 2"
                 />
               )}
-              {currentPage === 3 && <Code />}
+              {currentPage === 3 && <Code quizData={quizData[0]} />}
               {currentPage === 4 && (
                 <Completed
                   img={Correct}
                   title="Great Job!"
-                  enrollPath="/package?type=courses"
+                  enrollPath="/catalog/course"
                   message="You have taken your first steps into becoming a programmer. Check out our catalog of courses and get started now."
                   btnText="View all courses"
                 />
