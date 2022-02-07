@@ -6,7 +6,7 @@ import SITE_DATA from "./config.js";
 import OpenGraph from "./OpenGraph";
 import TwitterCard from "./TwitterCard";
 
-import logo from "assets/images/logo-programiz-pro.svg";
+import logo from "assets/images/share-logo.jpg";
 
 const SEO_DEFAULT = {
   TITLE: "Programiz Pro",
