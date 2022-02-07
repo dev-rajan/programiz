@@ -1,4 +1,4 @@
-import programizLogo from "../../../public/images/share-logo.svg";
+import programizLogo from "../../../public/images/share-logo.jpg";
 
 const SITE_DATA = {
   title: "Programiz PRO", // Navigation and site title
