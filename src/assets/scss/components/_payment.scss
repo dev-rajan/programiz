@@ -1,0 +1,66 @@
+.payment {
+  @include e(header) {
+    height: 300px;
+    background-color: $color-text;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .btn {
+      color: $white;
+      margin-bottom: 2.25rem;
+    }
+  }
+  @include e(title) {
+    color: $white;
+    max-width: 490px;
+    @include mqmax(sm) {
+      font-size: 1.5rem;
+    }
+  }
+  @include e(content) {
+    padding: 48px 0;
+  }
+
+  &-card {
+    padding: 2rem 1.5rem 1.5rem;
+    background-color: $purple-grey;
+  }
+
+  &-footer {
+    a {
+      color: $color-text;
+      text-decoration: underline;
+      padding: 0 1rem;
+      border-right: 1px solid getColor('grey.borderGray');
+      font-size: getFontSize('body14');
+      &:hover {
+        color: $primary;
+      }
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+.card-detail {
+  @include e(item) {
+    background-color: $white;
+    padding: 1rem;
+    border-bottom: 1px solid getColor('grey.borderGray');
+    &:last-child {
+      border: 0;
+    }
+    .form-group {
+      align-items: center;
+    }
+  }
+}
+
+// .choose-plan-label {
+//   position: absolute;
+//   height: 1px;
+//   width: 1px;
+//   opacity: 0;
+// }

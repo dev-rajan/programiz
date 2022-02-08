@@ -1,0 +1,23 @@
+{
+  "data": {
+    "title": "C Programming Challenges",
+    "shareModalClassName": "modal-top--29",
+    "summary": "C Challenges help you apply your theoretical knowledge to solve various sets of C problems. These challenges will help you develop the programming mindset where you will learn to approach, solve and debut any programming challenges.</br></br>Become master in C Programming by solving 60+ challenges in real-time.",
+    "card1": {
+      "id": 1,
+      "title": "Combine learning with practice",
+      "desc": "Solve 60+ challenges to practice what you have learned in the course."
+    },
+    "card2": {
+      "id": 2,
+      "title": "Get certified at the end",
+      "desc": "Complete the challenges to get the course completion certificate."
+    },
+    "banner": {
+      "rock_paper": {
+        "title": "Rock, Paper & Scissors",
+        "desc": "You will create a popular game rock paper scissors using the basic concepts of C programming like functions, control flow and input/output."
+      }
+    }
+  }
+}

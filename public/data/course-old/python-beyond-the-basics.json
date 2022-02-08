@@ -1,0 +1,26 @@
+{
+  "data": {
+    "title": "Python Beyond the Basics",
+    "content": "The basic concept of python helps you dive into the world of programming from the very basics. Once you are past that step, it's time to explore the advanced concepts. Python Beyond the Basics will help you write code in a more pythonic way using different tips and tricks. You will also learn the concept of object-oriented using Python.\n\nBecome a Python Proficient by mastering the advanced concepts with the help of challenges and projects.",
+    "card1": {
+      "id": 1,
+      "title": "Combine learning with practice",
+      "desc": "Not just another Python Course. Solve 50+ challenges and create 2+ projects in real-time."
+    },
+    "card2": {
+      "id": 2,
+      "title": "Step-by-step guide to Python",
+      "desc": "Start from the basics and become Python proficient by the end."
+    },
+    "banner": {
+      "rock_paper": {
+        "title": "Rock, Paper & Scissors",
+        "desc": "You will use the Python OOP along with some advance concepts of Python to build the popular game rock paper scissors."
+      },
+      "tic_toe": {
+        "title": "Tic Tac Toe",
+        "desc": "You will use the concept of object-oriented in Python to create the Tic Tac Toe game."
+      }
+    }
+  }
+}

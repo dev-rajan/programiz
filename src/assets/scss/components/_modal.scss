@@ -1,0 +1,111 @@
+.modal {
+  max-width: 768px;
+  width: calc(100% - 48px);
+  background-color: $white;
+  border-radius: 10px;
+  padding: 1.75rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $zindex-modal;
+
+  @include e(title) {
+    font-size: 1.5rem;
+  }
+
+  @include e(backdrop) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparentize($color: $black, $amount: 0.4);
+    z-index: $zindex-modal-backdrop;
+  }
+
+  @include e(box) {
+    padding: 1.5rem;
+    border-radius: 20px;
+    background-color: $color-text;
+    color: $white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .modal__title {
+      color: $white;
+    }
+
+    .btn--link {
+      color: $white;
+    }
+  }
+
+  @include m(sm) {
+    max-width: 408px;
+  }
+
+  @include m(md) {
+    max-width: 562px;
+  }
+
+  @include e(footer) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    @include mq(sm) {
+      flex-direction: row;
+    }
+  }
+
+  .illus-award {
+    position: absolute;
+    top: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-confetti {
+    position: absolute;
+    left: 0;
+    top: -28px;
+    width: 100%;
+  }
+
+  &__sm {
+    max-width: 510px;
+  }
+
+}
+
+.modal__dimmer {
+  &::before {
+    content: '';
+    width: 100vw;
+    height: 100vh;
+    background-color: $black;
+    opacity: .4;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+  }
+}
+
+.modal__backdrop--dropdown.show {
+  background-color: rgba(0, 0, 0, .6) !important;
+}
+
+.modal__backdrop--dropdown {
+  z-index: 1000;
+  top: 56px;
+  background-color: transparent !important;
+  background-color: initial !important;
+  transition: all .2s ease-in;
+  pointer-events: none;
+}

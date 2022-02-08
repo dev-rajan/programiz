@@ -1,0 +1,16 @@
+.progress {
+  @include m(sm) {
+    height: 4px !important;
+  }
+  @include m(white) {
+    background-color: $white !important;
+  }
+  &-bar {
+    border-radius: 20px;
+  }
+  &-text {
+    font-size: getFontSize('tiny');
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+}

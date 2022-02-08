@@ -1,0 +1,22 @@
+{
+  "data": {
+    "title": "Advance Python Challenges",
+    "summary": "Advance Python Challenges help you understand python on a deeper level by solving various sets of Python problems. These challenges will help you develop the programming mindset and be ready to write code in the field of your choice (machine learning, web development, automation, etc).</br></br>Become the Python Master by solving 20+ advanced Python challenges in real-time.",
+    "card1": {
+      "id": 1,
+      "title": "Combine learning with practice",
+      "desc": "Solve 20+ challenges to practice what you have learned in the course."
+    },
+    "card2": {
+      "id": 2,
+      "title": "Get certified at the end",
+      "desc": "Complete the challenges to get the course completion certificate."
+    },
+    "banner": {
+      "rock_paper": {
+        "title": "Rock, Paper & Scissors",
+        "desc": "You will create a popular game rock paper scissors using the basic concepts of C programming like functions, control flow and input/output."
+      }
+    }
+  }
+}

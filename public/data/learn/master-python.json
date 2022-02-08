@@ -1,0 +1,26 @@
+{
+  "data": {
+    "title": "Become a Python Master",
+    "content": "Python is a popular programming language used for artificial intelligence, data science, web development, and many more. Learn to code in Python in the most interactive way possible, writing code and solving challenges in each step.",
+    "card1": {
+      "id": 1,
+      "title": "Combine learning with practice",
+      "desc": "Not just another Python course. Solve 100+ challenges and create 5 projects in real-time."
+    },
+    "card2": {
+      "id": 2,
+      "title": "Step-by-step guide to Python",
+      "desc": "Start from the basics and become Python proficient by the end."
+    },
+    "banner": {
+      "rock_paper": {
+        "title": "Rock, Paper & Scissors",
+        "desc": "You will create a popular game rock paper scissors using the basic concepts of Python like functions, control flow and input/output."
+      },
+      "tic_toe": {
+        "title": "Tic Tac Toe",
+        "desc": "You will use the concept of object-oriented in Python to create the Tic Tac Toe game."
+      }
+    }
+  }
+}

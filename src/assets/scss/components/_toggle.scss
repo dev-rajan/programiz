@@ -1,0 +1,47 @@
+.toggle-wrapper {
+  min-height: 24px;
+  min-width: 42px;
+  max-height: 24px;
+  max-width: 42px;
+  .toggle {
+    &__item {
+      position: relative;
+      background-color: $white;
+      border: 1px solid getColor('grey.borderGray');
+      border-radius: 50px;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      margin: 0;
+      height: 100%;
+      align-items: center;
+      padding: 3px;
+      @include transition();
+      &:before {
+        content: '';
+        display: inline-block;
+        position: relative;
+        height: 18px;
+        width: 18px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 0px 2px 6px 0px #b0bac5;
+        @include transition();
+      }
+    }
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    &:checked + .toggle__item {
+      background-color: $primary;
+      border-color: $primary;
+      &:before {
+        box-shadow: 0px 2px 6px 0px #008de7;
+        transform: translateX(16px);
+      }
+    }
+  }
+}

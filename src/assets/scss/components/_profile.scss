@@ -1,0 +1,14 @@
+.user-wrapper {
+  padding: 2rem;
+  background-color: $purple-grey;
+  border-radius: $border-radius;
+  position: relative;
+  padding-top: 100px;
+  margin-top: 4.5rem;
+  .user-img {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

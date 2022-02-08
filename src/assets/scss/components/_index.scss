@@ -1,0 +1,47 @@
+// ==========================================================================
+// Manifest (Modules)
+// Each folder on the SMACSS architecture will have its own manifest partial. We import all the partials of
+// the folder to its respective manifest partial. Then all manifest partial will be imported to the
+// style.scss file.
+// ==========================================================================
+
+@import 'extends';
+@import 'module';
+@import 'buttons';
+@import 'card';
+@import 'community';
+@import 'callout';
+// @import 'theme';
+
+@import "navigation";
+@import "breadcrumbs";
+@import "badge";
+@import "toggle";
+@import "avatar";
+@import "loader";
+@import "tab";
+@import "progress-bar";
+@import "circle-progress";
+@import "accordion";
+@import "list";
+@import "table";
+@import "popup";
+@import "input";
+@import "lesson-dashboard";
+@import "stepper";
+@import "quiz";
+@import "pill";
+@import "modal";
+@import "register";
+@import "payment";
+@import "alert";
+@import "profile";
+@import "lightbox";
+@import "landing";
+@import "account";
+@import "search";
+@import "loading";
+@import "notification";
+@import "arrow";
+@import "animation";
+@import "terms"

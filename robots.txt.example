@@ -1,0 +1,10 @@
+# For programiz.pro
+
+User-agent: *
+
+# block all crawler
+Disallow: /
+
+# block specific pages
+Disallow: /catalog/
+Disallow: /package/

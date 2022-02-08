@@ -1,0 +1,26 @@
+{
+  "data": {
+    "title": "Learn C Programming",
+    "summary": "C is one of the most efficient programming languages that help you understand how the software and hardware interact with each other. That's why we believe every programmer should learn C, as it allows you to work directly with computer memory and helps understand programming from a deeper level.</br> </br>Master C programming in the most interactive way possible, solving challenges and building projects.",
+    "card1": {
+      "id": 1,
+      "title": "Combine learning with practice",
+      "desc": "Not just another C Course. Solve 60+ challenges and create 2 projects in real-time."
+    },
+    "card2": {
+      "id": 2,
+      "title": "Step-by-step guide to C",
+      "desc": "No prior knowledge is required. Start from the basics and become C proficient by the end."
+    },
+    "banner": {
+      "rock_paper": {
+        "title": "Rock, Paper & Scissors",
+        "desc": "You will create a popular game rock paper scissors using the basic concepts of C like functions, control flow, and input/output."
+      },
+      "tic_toe": {
+        "title": "Tic Tac Toe",
+        "desc": "You will use the concept of object-oriented in Python to create the Tic Tac Toe game."
+      }
+    }
+  }
+}
